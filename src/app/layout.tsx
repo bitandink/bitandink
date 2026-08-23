@@ -95,6 +95,13 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+
+  verification: {
+    other: {
+      "naver-site-verification":
+        "8093957bac455fefc42b868064f6e145aa87926c",
+    },
+  },
 };
 
 export default function RootLayout({
