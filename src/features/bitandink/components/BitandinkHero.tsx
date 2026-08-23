@@ -55,6 +55,9 @@ export default function BitandinkHero() {
   const returningToHeroRef = useRef(false);
   const switchTimerRef = useRef<number | null>(null);
   const playgroundTimersRef = useRef<number[]>([]);
+  const txtTimersRef = useRef<number[]>([]);
+  const readmeTimersRef = useRef<number[]>([]);
+  const logScrollRef = useRef<HTMLDivElement | null>(null);
   const thudAudioRef =
     useRef<HTMLAudioElement | null>(null);
 
@@ -91,6 +94,44 @@ export default function BitandinkHero() {
     giftBalloonPopped,
     setGiftBalloonPopped,
   ] = useState(false);
+
+
+  const [
+    txtViewerOpen,
+    setTxtViewerOpen,
+  ] = useState(false);
+
+  const [
+    txtStep,
+    setTxtStep,
+  ] = useState(0);
+
+  const [
+    logPanelOpen,
+    setLogPanelOpen,
+  ] = useState(false);
+
+  const [
+    readmePanelOpen,
+    setReadmePanelOpen,
+  ] = useState(false);
+
+  const [
+    readmeStep,
+    setReadmeStep,
+  ] = useState(0);
+
+  const [
+    sessionLogs,
+    setSessionLogs,
+  ] = useState<
+    Array<{
+      id: number;
+      time: string;
+      level: string;
+      message: string;
+    }>
+  >([]);
 
 
   const [
@@ -151,6 +192,167 @@ export default function BitandinkHero() {
     setEnvSendMessage,
   ] = useState("");
 
+
+  const getLogTime = () => {
+    const now = new Date();
+
+    return [
+      now.getHours(),
+      now.getMinutes(),
+      now.getSeconds(),
+    ]
+      .map((value) =>
+        String(value).padStart(2, "0")
+      )
+      .join(":");
+  };
+
+  const appendSessionLog = (
+    level: string,
+    message: string
+  ) => {
+    setSessionLogs((current) => {
+      const next = [
+        ...current,
+        {
+          id:
+            Date.now() +
+            Math.floor(Math.random() * 1000),
+          time: getLogTime(),
+          level,
+          message,
+        },
+      ];
+
+      return next.slice(-64);
+    });
+  };
+
+  const clearReadmeTimers = () => {
+    readmeTimersRef.current.forEach(
+      (timer) => {
+        window.clearTimeout(timer);
+      }
+    );
+
+    readmeTimersRef.current = [];
+  };
+
+  const scheduleReadme = (
+    callback: () => void,
+    delay: number
+  ) => {
+    const timer =
+      window.setTimeout(
+        callback,
+        delay
+      );
+
+    readmeTimersRef.current.push(timer);
+  };
+
+  const closeReadmePanel = () => {
+    clearReadmeTimers();
+    setReadmeStep(0);
+    setReadmePanelOpen(false);
+  };
+
+  const closeLogPanel = () => {
+    setLogPanelOpen(false);
+  };
+
+  const openLogPanel = () => {
+    closeTxtViewer();
+    closeReadmePanel();
+    setCssLabOpen(false);
+    setEnvPanelOpen(false);
+    setLogPanelOpen(true);
+
+    appendSessionLog(
+      "ACCESS",
+      ".log opened"
+    );
+  };
+
+  const openReadmePanel = () => {
+    closeTxtViewer();
+    closeLogPanel();
+    clearReadmeTimers();
+
+    setCssLabOpen(false);
+    setEnvPanelOpen(false);
+    setReadmeStep(0);
+    setReadmePanelOpen(true);
+
+    appendSessionLog(
+      "ACCESS",
+      "README.md opened"
+    );
+
+    scheduleReadme(
+      () => {
+        setReadmeStep(1);
+
+        appendSessionLog(
+          "WARN",
+          "README status modified by HODU"
+        );
+      },
+      3200
+    );
+
+    scheduleReadme(
+      () => {
+        setReadmeStep(2);
+
+        appendSessionLog(
+          "???",
+          "PAMA approved own supervision status"
+        );
+      },
+      6100
+    );
+  };
+
+  useEffect(() => {
+    appendSessionLog(
+      "INFO",
+      "playground initialized"
+    );
+
+    appendSessionLog(
+      "OK",
+      "resident.bean connected"
+    );
+
+    appendSessionLog(
+      "OK",
+      "resident.pama connected"
+    );
+
+    appendSessionLog(
+      "WARN",
+      "resident.hodu detected"
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!logPanelOpen) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      const scroller =
+        logScrollRef.current;
+
+      if (!scroller) {
+        return;
+      }
+
+      scroller.scrollTop =
+        scroller.scrollHeight;
+    });
+  }, [logPanelOpen, sessionLogs]);
 
   useEffect(() => {
     if (!envPanelOpen) {
@@ -230,10 +432,20 @@ export default function BitandinkHero() {
         "> delivered to bitandink.\n> variable cleared."
       );
       setEnvNote("");
+
+      appendSessionLog(
+        "SENT",
+        "anonymous variable delivered"
+      );
     } catch {
       setEnvSendState("error");
       setEnvSendMessage(
         "> transmission failed. try again later."
+      );
+
+      appendSessionLog(
+        "FAIL",
+        "private variable transmission failed"
       );
     }
   };
@@ -771,6 +983,184 @@ export default function BitandinkHero() {
     );
   };
 
+  const clearTxtTimers = () => {
+    txtTimersRef.current.forEach(
+      (timer) => {
+        window.clearTimeout(timer);
+      }
+    );
+
+    txtTimersRef.current = [];
+  };
+
+  const scheduleTxt = (
+    callback: () => void,
+    delay: number
+  ) => {
+    const timer =
+      window.setTimeout(
+        callback,
+        delay
+      );
+
+    txtTimersRef.current.push(timer);
+  };
+
+  const closeTxtViewer = () => {
+    clearTxtTimers();
+    setTxtStep(0);
+    setTxtViewerOpen(false);
+  };
+
+  const openTxtViewer = () => {
+    clearTxtTimers();
+
+    setCssLabOpen(false);
+    setEnvPanelOpen(false);
+    closeLogPanel();
+    closeReadmePanel();
+    setTxtStep(0);
+    setTxtViewerOpen(true);
+
+    appendSessionLog(
+      "ACCESS",
+      ".txt opened"
+    );
+
+    /*
+      sample.txt incident timeline
+
+      0  quiet
+      1  HODU approaches
+      2  HODU steals "다"
+      3  BEAN sighs / retrieves it
+      4  text restored
+      5  PAMA strolls through
+      6  PAMA nudges "조"
+      7  BEAN stares
+      8  PAMA leaves: "잘들 논다~"
+      9  BEAN fixes the line again
+      10 stable
+    */
+    scheduleTxt(
+      () => {
+        setTxtStep(1);
+
+        appendSessionLog(
+          "TRACE",
+          "HODU entered text buffer"
+        );
+      },
+      1900
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(2);
+
+        appendSessionLog(
+          "WARN",
+          "character count changed: 43 → 42"
+        );
+      },
+      5700
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(3);
+
+        appendSessionLog(
+          "TRACE",
+          "missing character located near HODU"
+        );
+      },
+      9800
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(4);
+
+        appendSessionLog(
+          "INFO",
+          'BEAN restored "다"'
+        );
+      },
+      12300
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(5);
+
+        appendSessionLog(
+          "EVENT",
+          "PAMA entered text buffer"
+        );
+      },
+      14200
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(6);
+
+        appendSessionLog(
+          "WARN",
+          "unexpected character displacement"
+        );
+      },
+      16500
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(7);
+
+        appendSessionLog(
+          "TRACE",
+          "BEAN is staring at PAMA"
+        );
+      },
+      18400
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(8);
+
+        appendSessionLog(
+          "INFO",
+          'PAMA: "잘들 논다~"'
+        );
+      },
+      21100
+    );
+
+    scheduleTxt(
+      () => {
+        setTxtStep(9);
+
+        appendSessionLog(
+          "INFO",
+          "BEAN restored document"
+        );
+
+        appendSessionLog(
+          "WARN",
+          "BEAN patience level: 12%"
+        );
+      },
+      23300
+    );
+
+    scheduleTxt(
+      () => setTxtStep(10),
+      25000
+    );
+  };
+
   const startHoduSequence = () => {
     if (
       playgroundScene !== "idle" &&
@@ -785,8 +1175,23 @@ export default function BitandinkHero() {
     setGiftBalloonPopped(false);
     setPlaygroundScene("chasing");
 
+    appendSessionLog(
+      "WARN",
+      "HODU attempted to capture data"
+    );
+
     schedulePlayground(() => {
       setPlaygroundScene("fallen");
+
+      appendSessionLog(
+        "FAIL",
+        "data capture failed"
+      );
+
+      appendSessionLog(
+        "THUD",
+        "HODU hit the floor"
+      );
 
       const thud =
         thudAudioRef.current;
@@ -802,11 +1207,21 @@ export default function BitandinkHero() {
 
     schedulePlayground(() => {
       setPlaygroundScene("comforting");
+
+      appendSessionLog(
+        "INFO",
+        "BEAN initiating recovery"
+      );
     }, 2650);
 
     schedulePlayground(() => {
       setPlaygroundScene("gift");
       setBeanGiftBubbleVisible(true);
+
+      appendSessionLog(
+        "INFO",
+        "BEAN provided replacement data"
+      );
 
       schedulePlayground(() => {
         setBeanGiftBubbleVisible(false);
@@ -840,13 +1255,30 @@ export default function BitandinkHero() {
 
     setBeanGiftBubbleVisible(false);
     setGiftBalloonPopped(true);
+
+    appendSessionLog(
+      "EVENT",
+      "JSON balloon popped"
+    );
+
+    appendSessionLog(
+      "???",
+      "snack precipitation detected"
+    );
   };
 
   const resetPlayground = () => {
     clearPlaygroundTimers();
+    clearTxtTimers();
+    clearReadmeTimers();
     setPlaygroundObserver(null);
     setBeanGiftBubbleVisible(false);
     setGiftBalloonPopped(false);
+    setTxtViewerOpen(false);
+    setTxtStep(0);
+    setLogPanelOpen(false);
+    setReadmePanelOpen(false);
+    setReadmeStep(0);
     setPlaygroundScene("idle");
   };
 
@@ -858,11 +1290,18 @@ export default function BitandinkHero() {
       setGiftBalloonPopped(false);
       setCssLabOpen(false);
       setEnvPanelOpen(false);
+      setTxtViewerOpen(false);
+      setTxtStep(0);
+      setLogPanelOpen(false);
+      setReadmePanelOpen(false);
+      setReadmeStep(0);
       setPlaygroundScene("idle");
     }
 
     return () => {
       clearPlaygroundTimers();
+      clearTxtTimers();
+      clearReadmeTimers();
     };
   }, [activeView]);
 
@@ -1978,6 +2417,9 @@ export default function BitandinkHero() {
                       styles[
                         `playgroundScene_${playgroundScene}`
                       ],
+                      txtViewerOpen
+                        ? styles.playgroundSceneTxtOpen
+                        : "",
                     ]
                       .filter(Boolean)
                       .join(" ")}
@@ -1993,18 +2435,17 @@ export default function BitandinkHero() {
                       </p>
                     </div>
 
-                    <a
+                    <button
+                      type="button"
                       className={[
                         styles.playData,
                         styles.playDataOne,
                       ].join(" ")}
-                      href="https://orange-periwinkle-04b.notion.site/2ef3b18f802880fc8851d0175a7c5398"
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label="Open bitandink portfolio on Notion"
+                      onClick={openReadmePanel}
+                      aria-label="Open Playground README"
                     >
                       .md
-                    </a>
+                    </button>
 
                     <a
                       className={[
@@ -2025,9 +2466,18 @@ export default function BitandinkHero() {
                         styles.playData,
                         styles.playDataThree,
                       ].join(" ")}
-                      onClick={() =>
-                        setCssLabOpen(true)
-                      }
+                      onClick={() => {
+                        closeTxtViewer();
+                        closeLogPanel();
+                        closeReadmePanel();
+                        setEnvPanelOpen(false);
+                        setCssLabOpen(true);
+
+                        appendSessionLog(
+                          "ACCESS",
+                          ".css lab opened"
+                        );
+                      }}
                       aria-label="Open CSS Lab"
                     >
                       .css
@@ -2039,8 +2489,8 @@ export default function BitandinkHero() {
                         styles.playData,
                         styles.playDataFour,
                       ].join(" ")}
-                      onClick={startHoduSequence}
-                      aria-label="Catch text data"
+                      onClick={openTxtViewer}
+                      aria-label="Open text viewer"
                     >
                       .txt
                     </button>
@@ -2063,8 +2513,8 @@ export default function BitandinkHero() {
                         styles.playData,
                         styles.playDataSix,
                       ].join(" ")}
-                      onClick={startHoduSequence}
-                      aria-label="Catch log data"
+                      onClick={openLogPanel}
+                      aria-label="Open activity log"
                     >
                       .log
                     </button>
@@ -2076,8 +2526,16 @@ export default function BitandinkHero() {
                         styles.playDataSeven,
                       ].join(" ")}
                       onClick={() => {
+                        closeTxtViewer();
+                        closeLogPanel();
+                        closeReadmePanel();
                         setCssLabOpen(false);
                         setEnvPanelOpen(true);
+
+                        appendSessionLog(
+                          "ACCESS",
+                          ".env opened"
+                        );
                       }}
                       aria-label="Open private env note"
                     >
@@ -2158,7 +2616,7 @@ export default function BitandinkHero() {
                       aria-label="Talk to Pama"
                     >
                       <img
-                        src="/bitandink/residents/pama.webp"
+                        src="/bitandink/characters/pama/pama.webp"
                         alt="Pama"
                       />
 
@@ -2184,7 +2642,7 @@ export default function BitandinkHero() {
                       aria-label="Talk to bitandink"
                     >
                       <img
-                        src="/bitandink/residents/bitandink-front.webp"
+                        src="/bitandink/characters/bai/bitandink-front.webp"
                         alt="bitandink"
                       />
 
@@ -2207,7 +2665,17 @@ export default function BitandinkHero() {
                         aria-label="Play with Hodu"
                       >
                         <img
-                          src="/bitandink/residents/hodu.webp"
+                          src={
+                            playgroundScene === "chasing"
+                              ? "/bitandink/characters/hodu/hodu-jump.webp"
+                              : playgroundScene === "fallen"
+                                ? "/bitandink/characters/hodu/hodu-crash.webp"
+                                : playgroundScene === "comforting"
+                                  ? "/bitandink/characters/hodu/hodu-down.webp"
+                                  : playgroundScene === "gift"
+                                    ? "/bitandink/characters/hodu/hodu-idle.webp"
+                                    : "/bitandink/characters/hodu/hodu.webp"
+                          }
                           alt="Hodu"
                         />
                       </button>
@@ -2233,7 +2701,7 @@ export default function BitandinkHero() {
                       className={styles.beanActor}
                     >
                       <img
-                        src="/bitandink/residents/bean.webp"
+                        src="/bitandink/characters/bean/bean.webp"
                         alt="Bean"
                       />
 
@@ -2322,6 +2790,560 @@ export default function BitandinkHero() {
                       >
                         again? ↺
                       </button>
+                    ) : null}
+
+                    {readmePanelOpen ? (
+                      <aside
+                        className={styles.readmePanel}
+                        aria-label="Playground README"
+                      >
+                        <div
+                          className={styles.readmeHeader}
+                        >
+                          <div>
+                            <span>README.md</span>
+                            <strong>
+                              bitandink / playground
+                            </strong>
+                          </div>
+
+                          <button
+                            type="button"
+                            className={styles.readmeClose}
+                            onClick={closeReadmePanel}
+                            aria-label="Close Playground README"
+                          >
+                            ×
+                          </button>
+                        </div>
+
+                        <div
+                          className={styles.readmeBody}
+                        >
+                          <section
+                            className={styles.readmeIntro}
+                          >
+                            <span
+                              className={styles.readmeEyebrow}
+                            >
+                              # bitandink / playground
+                            </span>
+
+                            <p>
+                              a tiny place where code,
+                              characters, and unnecessary
+                              interactions live.
+                            </p>
+                          </section>
+
+                          <section
+                            className={styles.readmeSection}
+                          >
+                            <h3>## residents</h3>
+
+                            <div
+                              className={styles.readmeResidents}
+                            >
+                              <article>
+                                <strong>BEAN</strong>
+                                <p>
+                                  maintains the system.
+                                  <br />
+                                  fixes things nobody asked
+                                  HODU to break.
+                                </p>
+                              </article>
+
+                              <article>
+                                <strong>HODU</strong>
+                                <p>
+                                  professional troublemaker.
+                                  <br />
+                                  occasionally steals text
+                                  and chases data.
+                                </p>
+                              </article>
+
+                              <article>
+                                <strong>PAMA</strong>
+                                <p>
+                                  mostly observes.
+                                  <br />
+                                  occasionally makes things
+                                  worse.
+                                </p>
+                              </article>
+
+                              <article>
+                                <strong>bitandink</strong>
+                                <p>
+                                  built this place.
+                                  <br />
+                                  claims everything is
+                                  intentional.
+                                </p>
+                              </article>
+                            </div>
+                          </section>
+
+                          <section
+                            className={[
+                              styles.readmeSection,
+                              styles.readmeStatusSection,
+                            ].join(" ")}
+                          >
+                            <h3>## status</h3>
+
+                            <div
+                              className={styles.readmeStatusList}
+                            >
+                              <p>
+                                <span>✓</span>
+                                system online
+                              </p>
+
+                              <p>
+                                <span>✓</span>
+                                bean working
+                              </p>
+
+                              <p
+                                className={
+                                  readmeStep >= 1
+                                    ? styles.readmeStatusTampered
+                                    : ""
+                                }
+                              >
+                                <span>
+                                  {readmeStep >= 1
+                                    ? "?"
+                                    : "✓"}
+                                </span>
+                                hodu supervised
+
+                                {readmeStep >= 1 ? (
+                                  <em>
+                                    // probably not
+                                  </em>
+                                ) : null}
+                              </p>
+
+                              <p
+                                className={
+                                  readmeStep >= 2
+                                    ? styles.readmeStatusPama
+                                    : ""
+                                }
+                              >
+                                <span>
+                                  {readmeStep >= 2
+                                    ? "✓"
+                                    : "△"}
+                                </span>
+                                pama unsupervised
+
+                                {readmeStep >= 2 ? (
+                                  <em>
+                                    // self-approved
+                                  </em>
+                                ) : null}
+                              </p>
+                            </div>
+                          </section>
+
+                          <footer
+                            className={styles.readmeFooter}
+                          >
+                            <span>
+                              // no useful features were
+                              harmed in the making of this
+                              playground.
+                            </span>
+
+                            <a
+                              href="https://orange-periwinkle-04b.notion.site/2ef3b18f802880fc8851d0175a7c5398"
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              portfolio ↗
+                            </a>
+                          </footer>
+                        </div>
+                      </aside>
+                    ) : null}
+
+                    {logPanelOpen ? (
+                      <aside
+                        className={styles.logPanel}
+                        aria-label="Playground activity log"
+                      >
+                        <div
+                          className={styles.logPanelHeader}
+                        >
+                          <div>
+                            <span>ACTIVITY LOG</span>
+                            <strong>
+                              playground.log
+                            </strong>
+                          </div>
+
+                          <button
+                            type="button"
+                            className={styles.logPanelClose}
+                            onClick={closeLogPanel}
+                            aria-label="Close activity log"
+                          >
+                            ×
+                          </button>
+                        </div>
+
+                        <div
+                          ref={logScrollRef}
+                          className={styles.logTerminal}
+                          aria-live="polite"
+                        >
+                          {sessionLogs.map((entry) => (
+                            <div
+                              key={entry.id}
+                              className={styles.logRow}
+                            >
+                              <time>{entry.time}</time>
+
+                              <span
+                                className={[
+                                  styles.logLevel,
+                                  styles[
+                                    `logLevel_${entry.level.replace(
+                                      /[^a-zA-Z]/g,
+                                      ""
+                                    )}`
+                                  ],
+                                ]
+                                  .filter(Boolean)
+                                  .join(" ")}
+                              >
+                                [{entry.level}]
+                              </span>
+
+                              <p>{entry.message}</p>
+                            </div>
+                          ))}
+
+                          <div
+                            className={[
+                              styles.logRow,
+                              styles.logRowSystem,
+                            ].join(" ")}
+                          >
+                            <time>--:--:--</time>
+                            <span
+                              className={styles.logLevel}
+                            >
+                              [SYSTEM]
+                            </span>
+                            <p>
+                              everything is under control.
+                            </p>
+                          </div>
+
+                          <div
+                            className={[
+                              styles.logRow,
+                              styles.logRowSystem,
+                            ].join(" ")}
+                          >
+                            <time>--:--:--</time>
+                            <span
+                              className={styles.logLevel}
+                            >
+                              [SYSTEM]
+                            </span>
+                            <p>probably.</p>
+                          </div>
+                        </div>
+
+                        <div
+                          className={styles.logPanelFooter}
+                        >
+                          <span>
+                            session only / not persisted
+                          </span>
+
+                          <span>
+                            {sessionLogs.length} events
+                          </span>
+                        </div>
+                      </aside>
+                    ) : null}
+
+                    {txtViewerOpen ? (
+                      <aside
+                        className={styles.txtViewerPanel}
+                        aria-label="Text viewer"
+                      >
+                        <div
+                          className={styles.txtViewerHeader}
+                        >
+                          <div>
+                            <span>TEXT VIEWER</span>
+                            <strong>sample.txt</strong>
+                          </div>
+
+                          <button
+                            type="button"
+                            className={styles.txtViewerClose}
+                            onClick={closeTxtViewer}
+                            aria-label="Close text viewer"
+                          >
+                            ×
+                          </button>
+                        </div>
+
+                        <div
+                          className={styles.txtViewerBody}
+                        >
+                          <div
+                            className={styles.txtPaper}
+                          >
+                            <p>
+                              오늘도 데이터는{" "}
+                              <span
+                                className={[
+                                  styles.txtCharacter,
+                                  txtStep >= 6 &&
+                                  txtStep < 9
+                                    ? styles.txtCharacterNudged
+                                    : "",
+                                ]
+                                  .filter(Boolean)
+                                  .join(" ")}
+                              >
+                                조
+                              </span>
+                              용히 흐르고 있다.
+                            </p>
+
+                            <p>
+                              아무 일도 일어나지 않을 것이
+                              <span
+                                className={[
+                                  styles.txtCharacter,
+                                  txtStep >= 2 &&
+                                  txtStep < 4
+                                    ? styles.txtCharacterMissing
+                                    : "",
+                                ]
+                                  .filter(Boolean)
+                                  .join(" ")}
+                              >
+                                다
+                              </span>
+                              .
+                            </p>
+
+                            <p>아마도.</p>
+                          </div>
+
+                          <div
+                            className={styles.txtMeta}
+                          >
+                            <span>
+                              characters
+                              <strong>
+                                {txtStep >= 2 &&
+                                txtStep < 4
+                                  ? "42"
+                                  : "43"}
+                              </strong>
+                            </span>
+
+                            <span>
+                              status
+                              <strong>
+                                {txtStep === 0
+                                  ? "stable"
+                                  : txtStep === 1
+                                    ? "suspicious"
+                                    : txtStep >= 2 &&
+                                        txtStep < 4
+                                      ? "corrupted"
+                                      : txtStep === 4
+                                        ? "restored"
+                                        : txtStep >= 6 &&
+                                            txtStep < 9
+                                          ? "...seriously?"
+                                          : txtStep >= 9
+                                            ? "stable"
+                                            : "watching"}
+                              </strong>
+                            </span>
+                          </div>
+
+                          {txtStep >= 1 &&
+                          txtStep < 4 ? (
+                            <div
+                              className={[
+                                styles.txtHodu,
+                                txtStep >= 2
+                                  ? styles.txtHoduEscape
+                                  : styles.txtHoduApproach,
+                              ]
+                                .filter(Boolean)
+                                .join(" ")}
+                            >
+                              <img
+                                src={
+                                  txtStep === 1
+                                    ? "/bitandink/characters/hodu/hodu-sneak.webp"
+                                    : txtStep === 2
+                                      ? "/bitandink/characters/hodu/hodu-steal.webp"
+                                      : "/bitandink/characters/hodu/hodu-escape.webp"
+                                }
+                                alt=""
+                              />
+
+                              {txtStep >= 2 ? (
+                                <span
+                                  className={styles.txtStolenLetter}
+                                >
+                                  다
+                                </span>
+                              ) : null}
+                            </div>
+                          ) : null}
+
+                          {txtStep >= 3 &&
+                          txtStep < 10 ? (
+                            <div
+                              className={[
+                                styles.txtBean,
+                                txtStep === 3
+                                  ? styles.txtBeanRetrieve
+                                  : "",
+                                txtStep === 5 ||
+                                txtStep === 6 ||
+                                txtStep === 8 ||
+                                txtStep === 9
+                                  ? styles.txtBeanPamaScale
+                                  : "",
+                                txtStep === 7
+                                  ? styles.txtBeanStare
+                                  : "",
+                              ]
+                                .filter(Boolean)
+                                .join(" ")}
+                            >
+                              <img
+                                src={
+                                  txtStep === 3
+                                    ? "/bitandink/characters/bean/bean-retrieve.webp"
+                                    : txtStep === 4
+                                      ? "/bitandink/characters/bean/bean-arrange.webp"
+                                      : txtStep === 7
+                                        ? "/bitandink/characters/bean/bean-stare.webp"
+                                        : txtStep === 9
+                                          ? "/bitandink/characters/bean/bean-sigh.webp"
+                                          : "/bitandink/characters/bean/bean-working.webp"
+                                }
+                                alt=""
+                              />
+
+                              {txtStep === 3 ? (
+                                <span
+                                  className={styles.txtResidentBubble}
+                                >
+                                  하아...
+                                </span>
+                              ) : null}
+
+                              {txtStep === 7 ? (
+                                <span
+                                  className={styles.txtResidentBubble}
+                                >
+                                  ...
+                                </span>
+                              ) : null}
+
+                              {txtStep === 9 ? (
+                                <span
+                                  className={styles.txtResidentBubble}
+                                >
+                                  하아........
+                                </span>
+                              ) : null}
+                            </div>
+                          ) : null}
+
+                          {txtStep >= 5 &&
+                          txtStep <= 9 ? (
+                            <div
+                              className={[
+                                styles.txtPama,
+                                txtStep === 5
+                                  ? styles.txtPamaWalk
+                                  : "",
+                                txtStep === 6 ||
+                                txtStep === 7 ||
+                                txtStep === 8
+                                  ? styles.txtPamaPause
+                                  : "",
+                                txtStep === 9
+                                  ? styles.txtPamaLeave
+                                  : "",
+                              ]
+                                .filter(Boolean)
+                                .join(" ")}
+                            >
+                              <img
+                                src={
+                                  txtStep === 5
+                                    ? "/bitandink/characters/pama/pama-walk.webp"
+                                    : txtStep === 6
+                                      ? "/bitandink/characters/pama/pama-nudge.webp"
+                                      : txtStep === 7
+                                        ? "/bitandink/characters/pama/pama-caught.webp"
+                                        : txtStep === 8
+                                          ? "/bitandink/characters/pama/pama-walk.webp"
+                                          : "/bitandink/characters/pama/pama-leave.webp"
+                                }
+                                alt=""
+                              />
+
+                              {txtStep === 8 ? (
+                                <span
+                                  className={[
+                                    styles.txtResidentBubble,
+                                    styles.txtPamaBubble,
+                                  ].join(" ")}
+                                >
+                                  잘들 논다~
+                                </span>
+                              ) : null}
+                            </div>
+                          ) : null}
+
+                          {txtStep === 6 ? (
+                            <span
+                              className={styles.txtNudgeMark}
+                              aria-hidden="true"
+                            >
+                              툭
+                            </span>
+                          ) : null}
+                        </div>
+
+                        <div
+                          className={styles.txtViewerFooter}
+                        >
+                          <span>
+                            encoding / UTF-8
+                          </span>
+
+                          <span>
+                            readonly-ish
+                          </span>
+                        </div>
+                      </aside>
                     ) : null}
 
                     {envPanelOpen ? (

@@ -2862,11 +2862,13 @@
 }
 
 .playDataSix {
-  top: 52%;
-  left: 90%;
+  top: 64%;
+  left: 55%;
 
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+
+  font-size: 8px;
 
   animation-delay: -3.2s;
 }
@@ -3037,6 +3039,10 @@
   user-select: none;
 
   pointer-events: none;
+
+  transition:
+    opacity 160ms ease,
+    transform 220ms ease;
 }
 
 .beanActor {
@@ -3184,11 +3190,13 @@
 .playgroundScene_chasing
 .hoduActor {
   left: 56%;
+  bottom: 42px;
 
-  animation:
-    hoduChaseBounce
-    360ms ease-in-out
-    infinite alternate;
+  width: 235px;
+
+  transform:
+    translateY(-24px)
+    scale(1.02);
 }
 
 .playgroundScene_chasing
@@ -3227,12 +3235,13 @@
 .playgroundScene_fallen
 .hoduActor {
   left: 54%;
-  bottom: 18px;
+  bottom: 12px;
+
+  width: 195px;
 
   transform:
-    rotate(17deg)
     translateY(8px)
-    scale(0.96);
+    scale(0.98);
 }
 
 .playgroundScene_fallen
@@ -3243,6 +3252,11 @@
 .playgroundScene_comforting
 .hoduActor {
   left: 50%;
+  bottom: 28px;
+
+  transform:
+    translateY(4px)
+    scale(0.98);
 }
 
 .playgroundScene_gift
@@ -3251,7 +3265,6 @@
   bottom: 42px;
 
   transform:
-    rotate(-2deg)
     translateY(0)
     scale(1.02);
 }
@@ -3585,6 +3598,21 @@
   .playgroundScene_comforting
   .hoduActor {
     left: 46%;
+  }
+
+
+  .playgroundScene_chasing .hoduActor {
+    width: 178px;
+    bottom: 36px;
+
+    transform:
+      translateY(-20px)
+      scale(1.02);
+  }
+
+  .playgroundScene_fallen .hoduActor {
+    width: 152px;
+    bottom: 12px;
   }
 
   .playgroundScene_gift
@@ -4959,5 +4987,1980 @@ a.playData:active {
         )
         scale(1);
     }
+  }
+}
+
+/* ========================================
+   TXT VIEWER — HODU LETTER HEIST
+======================================== */
+
+.txtViewerPanel {
+  position: absolute;
+
+  z-index: 34;
+
+  top: 72px;
+  left: 50%;
+
+  width:
+    min(
+      650px,
+      calc(100% - 64px)
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.1
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      12,
+      13,
+      16,
+      0.97
+    );
+
+  box-shadow:
+    0 26px 70px
+    rgba(
+      0,
+      0,
+      0,
+      0.44
+    );
+
+  transform:
+    translateX(-50%);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.txtViewerHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 48px;
+
+  padding:
+    0 14px 0 17px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.07
+    );
+}
+
+.txtViewerHeader > div {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 12px;
+}
+
+.txtViewerHeader span,
+.txtViewerHeader strong,
+.txtMeta,
+.txtViewerFooter {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+}
+
+.txtViewerHeader span {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.72
+    );
+
+  font-size: 9px;
+
+  letter-spacing:
+    0.1em;
+}
+
+.txtViewerHeader strong {
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.38
+    );
+
+  font-size: 9px;
+
+  font-weight: 400;
+}
+
+.txtViewerClose {
+  display: grid;
+
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.08
+    );
+
+  border-radius: 6px;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.56
+    );
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.txtViewerBody {
+  position: relative;
+
+  min-height: 400px;
+
+  overflow: hidden;
+
+  padding:
+    44px 42px 120px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      ),
+      transparent 58%
+    );
+}
+
+.txtPaper {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 470px;
+
+  margin:
+    0 auto;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.78
+    );
+
+  font-size: 17px;
+
+  line-height: 2.05;
+
+  letter-spacing:
+    -0.015em;
+
+  word-break: keep-all;
+}
+
+.txtPaper p {
+  margin:
+    0 0 13px;
+}
+
+.txtPaper p:last-child {
+  margin-bottom: 0;
+}
+
+.txtCharacter {
+  position: relative;
+
+  display: inline-block;
+
+  min-width: 1em;
+
+  text-align: center;
+
+  transition:
+    transform 220ms ease,
+    opacity 150ms ease,
+    color 180ms ease;
+}
+
+.txtCharacterMissing {
+  color:
+    transparent;
+
+  opacity: 0.08;
+
+  transform:
+    translateY(-3px)
+    scale(0.72);
+}
+
+.txtCharacterNudged {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.82
+    );
+
+  transform:
+    translate3d(
+      18px,
+      11px,
+      0
+    )
+    rotate(13deg);
+}
+
+.txtMeta {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 178px;
+  right: 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 118px;
+
+  padding:
+    10px 12px;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.06
+    );
+
+  border-radius: 7px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.28
+    );
+
+  font-size: 8px;
+}
+
+.txtMeta > span {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 9px;
+}
+
+.txtMeta strong {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.58
+    );
+
+  font-weight: 400;
+
+  text-align: right;
+}
+
+.txtHodu,
+.txtBean,
+.txtPama {
+  position: absolute;
+
+  z-index: 8;
+
+  bottom: 22px;
+
+  pointer-events: none;
+}
+
+.txtHodu img,
+.txtBean img,
+.txtPama img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  user-select: none;
+
+  transition:
+    opacity 160ms ease,
+    transform 220ms ease;
+}
+
+.txtHodu {
+  left: -150px;
+
+  width: 145px;
+}
+
+.txtHoduApproach {
+  width: 195px;
+
+  animation:
+    txtHoduApproach
+    1950ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+.txtHoduEscape {
+  left: 42%;
+
+  width: 165px;
+
+  animation:
+    txtHoduEscape
+    2050ms
+    cubic-bezier(
+      0.3,
+      0.72,
+      0.3,
+      1
+    )
+    forwards;
+}
+
+.txtStolenLetter {
+  position: absolute;
+
+  top: 17px;
+  right: -12px;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 24px;
+  height: 24px;
+
+  border:
+    1px solid
+    rgba(
+      166,
+      244,
+      191,
+      0.24
+    );
+
+  border-radius: 5px;
+
+  background:
+    rgba(
+      12,
+      13,
+      16,
+      0.9
+    );
+
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.9
+    );
+
+  font-size: 13px;
+
+  transform:
+    rotate(8deg);
+
+  box-shadow:
+    0 5px 16px
+    rgba(
+      0,
+      0,
+      0,
+      0.24
+    );
+}
+
+.txtBean {
+  left: 20px;
+
+  width: 155px;
+
+  opacity: 0.96;
+}
+
+.txtBeanRetrieve {
+  width: 190px;
+
+  animation:
+    txtBeanRetrieve
+    1950ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+.txtBeanStare {
+  transform:
+    translateX(6px)
+    rotate(2deg);
+}
+
+.txtBeanPamaScale {
+  width: 176px;
+}
+
+.txtPama {
+  right: -150px;
+
+  width: 135px;
+}
+
+.txtPama img {
+  display: block;
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+.txtPamaWalk {
+  animation:
+    txtPamaWalkIn
+    1850ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+.txtPamaPause {
+  right: 110px;
+}
+
+.txtPamaPause {
+  width: 145px;
+}
+
+.txtPamaLeave {
+  right: 110px;
+
+  animation:
+    txtPamaLeave
+    2200ms
+    ease-in
+    forwards;
+}
+
+.txtResidentBubble {
+  position: absolute;
+
+  left: 50%;
+  bottom: calc(100% - 3px);
+
+  min-width: max-content;
+
+  padding:
+    6px 9px;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.08
+    );
+
+  border-radius: 7px;
+
+  background:
+    rgba(
+      12,
+      13,
+      16,
+      0.94
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.68
+    );
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  transform:
+    translateX(-50%);
+
+  white-space: nowrap;
+}
+
+.txtPamaBubble {
+  left: 28%;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.58
+    );
+}
+
+.txtNudgeMark {
+  position: absolute;
+
+  z-index: 9;
+
+  top: 63px;
+  left: 45%;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.24
+    );
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 8px;
+
+  transform:
+    rotate(-8deg);
+
+  animation:
+    txtNudgeMark
+    650ms
+    ease
+    forwards;
+}
+
+.txtViewerFooter {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 36px;
+
+  padding:
+    0 17px;
+
+  border-top:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.06
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.2
+    );
+
+  font-size: 8px;
+
+  letter-spacing:
+    0.04em;
+}
+
+@keyframes txtHoduApproach {
+  from {
+    left: -205px;
+
+    transform:
+      translateY(4px)
+      rotate(-3deg);
+  }
+
+  to {
+    left: 42%;
+
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+}
+
+@keyframes txtHoduEscape {
+  0% {
+    left: 42%;
+
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  35% {
+    transform:
+      translateY(-8px)
+      rotate(4deg);
+  }
+
+  100% {
+    left: calc(100% + 120px);
+
+    transform:
+      translateY(2px)
+      rotate(8deg);
+  }
+}
+
+@keyframes txtBeanRetrieve {
+  0% {
+    left: 20px;
+
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  45% {
+    left: 48%;
+
+    transform:
+      translateY(-4px)
+      rotate(-3deg);
+  }
+
+  100% {
+    left: 20px;
+
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+}
+
+@keyframes txtPamaWalkIn {
+  from {
+    right: -150px;
+  }
+
+  to {
+    right: 110px;
+  }
+}
+
+@keyframes txtPamaLeave {
+  from {
+    right: 110px;
+  }
+
+  to {
+    right: calc(100% + 120px);
+  }
+}
+
+@keyframes txtNudgeMark {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(7px)
+      rotate(-8deg);
+  }
+
+  35% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-8px)
+      rotate(-8deg);
+  }
+}
+
+@media (max-width: 780px) {
+  .txtViewerPanel {
+    top: 56px;
+
+    width:
+      calc(100% - 24px);
+
+    max-height:
+      calc(100% - 70px);
+
+    overflow-y: auto;
+  }
+
+  .txtViewerBody {
+    min-height: 410px;
+
+    padding:
+      34px 20px 132px;
+  }
+
+  .txtPaper {
+    padding-right: 0;
+
+    font-size: 15px;
+
+    line-height: 1.95;
+  }
+
+  .txtMeta {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    width: auto;
+
+    margin:
+      24px 0 0;
+  }
+
+  .txtHodu {
+    width: 122px;
+  }
+
+  .txtHoduApproach {
+    width: 152px;
+  }
+
+  .txtHoduEscape {
+    width: 132px;
+  }
+
+  .txtBean {
+    left: 14px;
+
+    width: 124px;
+  }
+
+  .txtBeanRetrieve {
+    width: 150px;
+  }
+
+  .txtBeanPamaScale {
+    width: 140px;
+  }
+
+  .txtPama {
+    width: 106px;
+  }
+
+  .txtPamaPause,
+  .txtPamaLeave {
+    right: 54px;
+  }
+
+  .txtResidentBubble {
+    font-size: 9px;
+  }
+
+  @keyframes txtHoduApproach {
+    from {
+      left: -162px;
+    }
+
+    to {
+      left: 43%;
+    }
+  }
+
+  @keyframes txtHoduEscape {
+    0% {
+      left: 43%;
+    }
+
+    100% {
+      left: calc(100% + 100px);
+    }
+  }
+
+  @keyframes txtBeanRetrieve {
+    0% {
+      left: 14px;
+    }
+
+    45% {
+      left: 44%;
+    }
+
+    100% {
+      left: 14px;
+    }
+  }
+
+  @keyframes txtPamaWalkIn {
+    from {
+      right: -116px;
+    }
+
+    to {
+      right: 54px;
+    }
+  }
+
+  @keyframes txtPamaLeave {
+    from {
+      right: 54px;
+    }
+
+    to {
+      right: calc(100% + 100px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .txtHoduApproach,
+  .txtHoduEscape,
+  .txtBeanRetrieve,
+  .txtPamaWalk,
+  .txtPamaLeave,
+  .txtNudgeMark {
+    animation-duration: 0.01ms;
+  }
+
+  .txtCharacter {
+    transition-duration: 0.01ms;
+  }
+}
+
+
+/* ========================================
+   TXT VIEWER — HIDE BASE PLAYGROUND ACTORS
+======================================== */
+
+.playgroundSceneTxtOpen .hoduActor,
+.playgroundSceneTxtOpen .beanActor,
+.playgroundSceneTxtOpen .pamaActor {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ========================================
+   ACTIVITY LOG
+======================================== */
+
+.logPanel {
+  position: absolute;
+
+  z-index: 35;
+
+  top: 72px;
+  left: 50%;
+
+  width:
+    min(
+      720px,
+      calc(100% - 64px)
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.1
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      9,
+      10,
+      12,
+      0.97
+    );
+
+  box-shadow:
+    0 26px 70px
+    rgba(
+      0,
+      0,
+      0,
+      0.46
+    );
+
+  transform:
+    translateX(-50%);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.logPanelHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 48px;
+
+  padding:
+    0 14px 0 17px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.07
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+}
+
+.logPanelHeader > div {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 12px;
+}
+
+.logPanelHeader span,
+.logPanelHeader strong,
+.logTerminal,
+.logPanelFooter {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+.logPanelHeader span {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.76
+    );
+
+  font-size: 9px;
+
+  letter-spacing:
+    0.1em;
+}
+
+.logPanelHeader strong {
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.36
+    );
+
+  font-size: 9px;
+
+  font-weight: 400;
+}
+
+.logPanelClose {
+  display: grid;
+
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.08
+    );
+
+  border-radius: 6px;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.58
+    );
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.logTerminal {
+  min-height: 360px;
+  max-height: 430px;
+
+  overflow-y: auto;
+
+  padding:
+    20px 20px 24px;
+
+  scrollbar-width: thin;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.58
+    );
+
+  font-size: 10px;
+
+  line-height: 1.75;
+}
+
+.logRow {
+  display: grid;
+
+  grid-template-columns:
+    68px 76px minmax(0, 1fr);
+
+  align-items: baseline;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  padding:
+    2px 0;
+}
+
+.logRow time {
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.2
+    );
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+.logRow p {
+  min-width: 0;
+
+  margin: 0;
+
+  overflow-wrap:
+    anywhere;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.56
+    );
+}
+
+.logLevel {
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.34
+    );
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+.logLevel_OK,
+.logLevel_SENT {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.72
+    );
+}
+
+.logLevel_WARN,
+.logLevel_THUD {
+  color:
+    rgba(
+      238,
+      200,
+      126,
+      0.76
+    );
+}
+
+.logLevel_FAIL {
+  color:
+    rgba(
+      238,
+      137,
+      137,
+      0.76
+    );
+}
+
+.logLevel_EVENT,
+.logLevel_ACCESS {
+  color:
+    rgba(
+      150,
+      190,
+      255,
+      0.74
+    );
+}
+
+.logLevel_TRACE {
+  color:
+    rgba(
+      194,
+      174,
+      238,
+      0.68
+    );
+}
+
+.logRowSystem {
+  opacity: 0.58;
+}
+
+.logRowSystem:first-of-type {
+  margin-top: 12px;
+}
+
+.logPanelFooter {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 36px;
+
+  gap: 16px;
+
+  padding:
+    0 17px;
+
+  border-top:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.06
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.2
+    );
+
+  font-size: 8px;
+
+  letter-spacing:
+    0.04em;
+}
+
+@media (max-width: 780px) {
+  .logPanel {
+    top: 56px;
+
+    width:
+      calc(100% - 24px);
+  }
+
+  .logTerminal {
+    min-height: 330px;
+    max-height: 390px;
+
+    padding:
+      16px 14px 20px;
+
+    font-size: 9px;
+  }
+
+  .logRow {
+    grid-template-columns:
+      58px 66px minmax(0, 1fr);
+
+    gap: 6px;
+  }
+
+  .logPanelFooter {
+    padding:
+      0 13px;
+  }
+}
+
+
+/* .log entry point — keep it readable above nearby actors */
+.playDataSix {
+  z-index: 12;
+
+  box-shadow:
+    0 0 0 1px
+    rgba(117, 255, 180, 0.035),
+    0 0 18px
+    rgba(117, 255, 180, 0.045);
+}
+
+
+/* ========================================
+   README / PLAYGROUND MANIFESTO
+======================================== */
+
+.readmePanel {
+  position: absolute;
+
+  z-index: 36;
+
+  top: 64px;
+  left: 50%;
+
+  width:
+    min(
+      760px,
+      calc(100% - 64px)
+    );
+
+  max-height:
+    calc(100% - 92px);
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.1
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      12,
+      13,
+      16,
+      0.98
+    );
+
+  box-shadow:
+    0 26px 72px
+    rgba(
+      0,
+      0,
+      0,
+      0.46
+    );
+
+  transform:
+    translateX(-50%);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.readmeHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 48px;
+
+  padding:
+    0 14px 0 18px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.07
+    );
+}
+
+.readmeHeader > div {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 12px;
+}
+
+.readmeHeader span,
+.readmeHeader strong,
+.readmeEyebrow,
+.readmeSection h3,
+.readmeStatusList,
+.readmeFooter {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+.readmeHeader span {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.76
+    );
+
+  font-size: 9px;
+
+  letter-spacing:
+    0.08em;
+}
+
+.readmeHeader strong {
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.34
+    );
+
+  font-size: 9px;
+
+  font-weight: 400;
+}
+
+.readmeClose {
+  display: grid;
+
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.08
+    );
+
+  border-radius: 6px;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.58
+    );
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.readmeBody {
+  max-height:
+    calc(100vh - 180px);
+
+  overflow-y: auto;
+
+  padding:
+    34px 38px 30px;
+
+  scrollbar-width: thin;
+}
+
+.readmeIntro {
+  padding-bottom: 28px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.06
+    );
+}
+
+.readmeEyebrow {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.88
+    );
+
+  font-size: 19px;
+
+  font-weight: 600;
+
+  letter-spacing:
+    -0.025em;
+}
+
+.readmeIntro p {
+  max-width: 560px;
+
+  margin: 0;
+
+  padding-left: 14px;
+
+  border-left:
+    2px solid
+    rgba(
+      166,
+      244,
+      191,
+      0.26
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.5
+    );
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.readmeSection {
+  padding:
+    28px 0 6px;
+}
+
+.readmeSection h3 {
+  margin:
+    0 0 18px;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.58
+    );
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.02em;
+}
+
+.readmeResidents {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    10px;
+}
+
+.readmeResidents article {
+  min-width: 0;
+
+  padding:
+    14px 15px;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.055
+    );
+
+  border-radius: 8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.014
+    );
+}
+
+.readmeResidents strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.72
+    );
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.08em;
+}
+
+.readmeResidents p {
+  margin: 0;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.43
+    );
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+.readmeStatusSection {
+  padding-bottom: 24px;
+}
+
+.readmeStatusList {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding:
+    14px 16px;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.055
+    );
+
+  border-radius: 8px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+}
+
+.readmeStatusList p {
+  display: flex;
+
+  align-items: baseline;
+
+  min-width: 0;
+
+  gap: 9px;
+
+  margin: 0;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.44
+    );
+
+  font-size: 9px;
+
+  line-height: 1.7;
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.readmeStatusList p > span {
+  width: 10px;
+
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.72
+    );
+
+  text-align: center;
+}
+
+.readmeStatusList em {
+  margin-left: auto;
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.22
+    );
+
+  font-size: 8px;
+
+  font-style: normal;
+
+  white-space: nowrap;
+}
+
+.readmeStatusTampered {
+  color:
+    rgba(
+      238,
+      200,
+      126,
+      0.72
+    ) !important;
+
+  transform:
+    translateX(3px);
+}
+
+.readmeStatusTampered > span {
+  color:
+    rgba(
+      238,
+      200,
+      126,
+      0.82
+    ) !important;
+
+  animation:
+    readmeHoduEdit
+    420ms ease both;
+}
+
+.readmeStatusPama {
+  color:
+    rgba(
+      194,
+      174,
+      238,
+      0.68
+    ) !important;
+}
+
+.readmeStatusPama > span {
+  color:
+    rgba(
+      194,
+      174,
+      238,
+      0.8
+    ) !important;
+
+  animation:
+    readmePamaApprove
+    520ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+.readmeFooter {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid
+    rgba(
+      236,
+      234,
+      229,
+      0.06
+    );
+
+  color:
+    rgba(
+      236,
+      234,
+      229,
+      0.2
+    );
+
+  font-size: 8px;
+
+  line-height: 1.7;
+}
+
+.readmeFooter > span {
+  max-width: 470px;
+}
+
+.readmeFooter a {
+  flex-shrink: 0;
+
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.58
+    );
+
+  text-decoration: none;
+}
+
+.readmeFooter a:hover {
+  color:
+    rgba(
+      166,
+      244,
+      191,
+      0.88
+    );
+}
+
+@keyframes readmeHoduEdit {
+  0% {
+    transform:
+      translateY(-5px)
+      rotate(-12deg)
+      scale(0.7);
+  }
+
+  65% {
+    transform:
+      translateY(1px)
+      rotate(7deg)
+      scale(1.18);
+  }
+
+  100% {
+    transform:
+      translateY(0)
+      rotate(0)
+      scale(1);
+  }
+}
+
+@keyframes readmePamaApprove {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-7px)
+      rotate(-8deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      rotate(0);
+  }
+}
+
+@media (max-width: 780px) {
+  .readmePanel {
+    top: 56px;
+
+    width:
+      calc(100% - 24px);
+
+    max-height:
+      calc(100% - 70px);
+  }
+
+  .readmeBody {
+    max-height:
+      calc(100vh - 145px);
+
+    padding:
+      24px 18px 22px;
+  }
+
+  .readmeResidents {
+    grid-template-columns:
+      1fr;
+  }
+
+  .readmeStatusList p {
+    flex-wrap: wrap;
+  }
+
+  .readmeStatusList em {
+    width: 100%;
+
+    margin-left: 19px;
+  }
+
+  .readmeFooter {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readmeStatusTampered > span,
+  .readmeStatusPama > span {
+    animation-duration: 0.01ms;
   }
 }
