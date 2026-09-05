@@ -3,10 +3,9 @@ export const SITE_CONFIG = {
   author: "bitandink",
   url: "https://beanlog.site",
 
-  title: "beanlog — a small virtual world by bitandink",
+  title: "beanlog — a virtual world by bitandink",
 
-  description:
-    "bitandink가 만든 작은 가상 세계이자 개발 놀이터. BEAN, PAMA, HODU와 함께 웹 개발, 인터랙션, 디자인과 작은 아이디어를 기록하고 실험합니다.",
+  description: "bitandink가 만든 작은 가상 세계. BEAN, PAMA, HODU와 함께 기록하고 실험하는 개발 놀이터.",
 
   locale: "ko_KR",
   language: "ko",
