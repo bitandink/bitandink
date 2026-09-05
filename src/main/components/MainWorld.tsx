@@ -11,6 +11,8 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import "@/main/styles/main-world.css";
+
 /* ========================================
    BOOT SEQUENCE
 ======================================== */
@@ -1258,16 +1260,15 @@ export default function BeanlogWorld() {
   async function gotoWorkspace(
     destination:
       | "bitandink"
-      | "archive"
-      | "perfugium"
+      | "beanlog"
       | "playground"
   ) {
     if (terminalBusy) {
       return;
     }
-
+  
     setTerminalBusy(true);
-
+  
     const config = {
       bitandink: {
         lines: [
@@ -1277,38 +1278,28 @@ export default function BeanlogWorld() {
         ],
         href: "/bitandink",
       },
-
-      archive: {
+  
+      beanlog: {
         lines: [
-          "> locating Archive...",
-          "> opening old records...",
+          "> locating resident logs...",
+          "> opening Beanlog...",
           "> connection established.",
         ],
-        href: "/bitandink?view=archive",
+        href: "/bitandink/beanlog",
       },
-
-      perfugium: {
-        lines: [
-          "> locating Perfugium...",
-          "> opening quiet space...",
-          "> connection established.",
-        ],
-        href: "/bitandink?view=perfugium",
-      },
-
+  
       playground: {
         lines: [
           "> locating Playground...",
           "> unstable area detected...",
           "> opening connection...",
         ],
-        href: "/bitandink?view=playground",
+        href: "/bitandink/playground",
       },
     } as const;
-
-    const target =
-      config[destination];
-
+  
+    const target = config[destination];
+  
     await typeTerminalOutput(
       target.lines,
       {
@@ -1316,9 +1307,9 @@ export default function BeanlogWorld() {
         lineDelay: 190,
       }
     );
-
+  
     await wait(260);
-
+  
     router.push(target.href);
   }
 
@@ -1373,13 +1364,14 @@ export default function BeanlogWorld() {
         "> about",
         "> status",
         "> clear",
+        ">",
         "> bitandink",
-        "> archive",
-        "> perfugium",
+        "> beanlog",
         "> playground",
         "> webzine",
+        "> portfolio",
       ]);
-
+    
       return;
     }
 
@@ -1568,78 +1560,95 @@ export default function BeanlogWorld() {
       return;
     }
 
-    /* GOTO */
+/* ========================================
+   NAVIGATION
+======================================== */
 
-    if (
-      command === "bitandink" ||
-      command === "goto bitandink" ||
-      command === "goto bitandink.site"
-    ) {
-      void gotoWorkspace("bitandink");
+/* BITANDINK / REAL WORLD */
 
+if (command === "bitandink") {
+  void gotoWorkspace("bitandink");
+
+  return;
+}
+
+/* BEANLOG / RESIDENT LOGS */
+
+if (command === "beanlog") {
+  void gotoWorkspace("beanlog");
+
+  return;
+}
+
+/* PLAYGROUND */
+
+if (command === "playground") {
+  void gotoWorkspace("playground");
+
+  return;
+}
+
+/* WEBZINE */
+
+if (command === "webzine") {
+  void (async () => {
+    if (terminalBusy) {
       return;
     }
 
-    if (
-      command === "archive" ||
-      command === "goto archive"
-    ) {
-      void gotoWorkspace("archive");
+    setTerminalBusy(true);
 
+    await typeTerminalOutput(
+      [
+        "> locating external publication...",
+        "> bitandink quarterly web magazine found.",
+        "> crossing into another story...",
+      ],
+      {
+        charDelay: 24,
+        lineDelay: 190,
+      }
+    );
+
+    await wait(260);
+
+    window.location.href =
+      "https://bitandink.vercel.app";
+  })();
+
+  return;
+}
+
+/* PORTFOLIO */
+
+if (command === "portfolio") {
+  void (async () => {
+    if (terminalBusy) {
       return;
     }
 
-    if (
-      command === "perfugium" ||
-      command === "goto perfugium"
-    ) {
-      void gotoWorkspace("perfugium");
+    setTerminalBusy(true);
 
-      return;
-    }
+    await typeTerminalOutput(
+      [
+        "> locating external portfolio...",
+        "> bitandink portfolio found.",
+        "> opening connection...",
+      ],
+      {
+        charDelay: 24,
+        lineDelay: 190,
+      }
+    );
 
-    if (
-      command === "playground" ||
-      command === "goto playground"
-    ) {
-      void gotoWorkspace("playground");
+    await wait(260);
 
-      return;
-    }
+    window.location.href =
+      "https://bitandink.github.io/portfolio-2026/";
+  })();
 
-    /* WEBZINE */
-
-    if (
-      command === "webzine" ||
-      command === "goto webzine"
-    ) {
-      void (async () => {
-        if (terminalBusy) {
-          return;
-        }
-
-        setTerminalBusy(true);
-
-        await typeTerminalOutput(
-          [
-            "> locating external publication...",
-            "> bitandink quarterly web magazine found.",
-            "> crossing into another story...",
-          ],
-          {
-            charDelay: 24,
-            lineDelay: 190,
-          }
-        );
-
-        await wait(260);
-
-        window.location.href =
-          "https://bitandink.vercel.app";
-      })();
-
-      return;
-    }
+  return;
+}
 
     /* UNKNOWN */
 

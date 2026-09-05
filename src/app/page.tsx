@@ -1,9 +1,5 @@
-import BitandinkRoom from "@/gateway/components/BitandinkRoom";
+import MainWorld from "@/main/components/MainWorld";
 
-export default function BitandinkPage() {
-  return (
-    <main>
-      <BitandinkRoom />
-    </main>
-  );
+export default function Home() {
+  return <MainWorld />;
 }

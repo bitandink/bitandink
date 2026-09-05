@@ -1,0 +1,816 @@
+/* ========================================
+   WORLD SHELL
+======================================== */
+
+.workspaceShell {
+    position: relative;
+  
+    display: grid;
+  
+    grid-template-columns:
+      240px minmax(0, 1fr);
+  
+    width: 100%;
+    height: 100svh;
+  
+    overflow: hidden;
+  
+    background: #111214;
+    color: #eceae5;
+  }
+  
+  
+  /* ========================================
+     SIDEBAR
+  ======================================== */
+  
+  .workspaceSidebar {
+    position: relative;
+  
+    z-index: 10;
+  
+    grid-column: 1;
+    grid-row: 1;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    min-width: 0;
+  
+    padding:
+      22px 14px 18px;
+  
+    border-right:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      );
+  
+    background: #0c0d10;
+  }
+  
+  
+  /* ========================================
+     WORKSPACE IDENTITY
+  ======================================== */
+  
+  .workspaceIdentity {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 11px;
+  
+    min-height: 50px;
+  
+    padding:
+      0 9px 17px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.045
+      );
+  }
+  
+  .workspaceMark {
+    display: grid;
+  
+    place-items: center;
+  
+    flex: 0 0 auto;
+  
+    width: 28px;
+    height: 28px;
+  
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.09
+      );
+  
+    border-radius: 7px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.82
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 11px;
+  }
+  
+  .workspaceIdentity > div {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 3px;
+  
+    min-width: 0;
+  }
+  
+  .workspaceIdentity strong {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.85
+      );
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    letter-spacing: -0.01em;
+  }
+  
+  .workspaceIdentity > div > span {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.28
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 8px;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  
+  /* ========================================
+     NAVIGATION
+  ======================================== */
+  
+  .workspaceNav {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 28px;
+  
+    padding-top: 24px;
+  }
+  
+  .navGroup {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 3px;
+  }
+  
+  .navGroupLabel {
+    display: block;
+  
+    margin:
+      0 9px 8px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.38
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 10px;
+  
+    letter-spacing: 0.16em;
+  }
+  
+  .navItem,
+  .navItem:link,
+  .navItem:visited {
+    display: grid;
+  
+    grid-template-columns:
+      20px 1fr;
+  
+    align-items: center;
+  
+    min-height: 33px;
+  
+    padding:
+      0 9px;
+  
+    border-radius: 6px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.38
+      );
+  
+    font-size: 13px;
+  
+    text-decoration: none;
+  }
+  
+  .navItem:hover {
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.028
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.68
+      );
+  
+    text-decoration: none;
+  }
+  
+  .navItem:focus-visible {
+    outline:
+      1px solid
+      rgba(
+        117,
+        255,
+        180,
+        0.34
+      );
+  
+    outline-offset: 2px;
+  }
+  
+  .navIcon {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.22
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  }
+  
+  .navItemActive {
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.045
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.82
+      );
+  }
+  
+  .navItemActive .navIcon {
+    color:
+      rgba(
+        117,
+        255,
+        180,
+        0.55
+      );
+  }
+  
+  
+  /* ========================================
+     SIDEBAR FOOTER
+  ======================================== */
+  
+  .sidebarFooter {
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    margin-top: auto;
+  
+    padding:
+      12px 9px 0;
+  
+    border-top:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.04
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.2
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 8px;
+  }
+  
+  .sidebarFooter i {
+    display: block;
+  
+    width: 5px;
+    height: 5px;
+  
+    border-radius: 50%;
+  
+    background:
+      rgba(
+        117,
+        255,
+        180,
+        0.55
+      );
+  }
+  
+  
+  /* ========================================
+     MAIN
+  ======================================== */
+  
+  .workspaceMain {
+    position: relative;
+  
+    grid-column: 2;
+    grid-row: 1;
+  
+    min-width: 0;
+    min-height: 0;
+  
+    overflow-y: auto;
+  
+    overscroll-behavior-y: contain;
+  
+    background: #111214;
+  }
+  
+  
+  /* ========================================
+     TOP BAR
+  ======================================== */
+  
+  .workspaceTopbar {
+    position: sticky;
+  
+    top: 0;
+  
+    z-index: 60;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+  
+    height: 46px;
+  
+    padding:
+      0 18px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.05
+      );
+  
+    background:
+      rgba(
+        17,
+        18,
+        20,
+        0.94
+      );
+  
+    backdrop-filter: blur(12px);
+  }
+  
+  .workspaceBreadcrumb {
+    display: flex;
+  
+    align-items: center;
+  
+    min-width: 0;
+  
+    gap: 7px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.26
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 8px;
+  
+    letter-spacing: 0.04em;
+  
+    white-space: nowrap;
+  }
+  
+  .workspaceBreadcrumb i {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.14
+      );
+  
+    font-style: normal;
+  }
+  
+  .workspaceBreadcrumb strong {
+    overflow: hidden;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.48
+      );
+  
+    font-weight: 400;
+  
+    text-overflow: ellipsis;
+  }
+  
+  
+  /* ========================================
+     STATUS
+  ======================================== */
+  
+  .workspaceStatus {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    margin-left: auto;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.28
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 8px;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  .statusDot {
+    display: block;
+  
+    width: 5px;
+    height: 5px;
+  
+    border-radius: 50%;
+  
+    background:
+      rgba(
+        117,
+        255,
+        180,
+        0.62
+      );
+  }
+  
+  
+  /* ========================================
+     MOBILE MENU BUTTON
+  ======================================== */
+  
+  .mobileMenuButton {
+    display: none;
+  
+    flex: 0 0 auto;
+  
+    width: 34px;
+    height: 34px;
+  
+    margin-left: 8px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.1
+      );
+  
+    border-radius: 7px;
+  
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      );
+  
+    cursor: pointer;
+  }
+  
+  .mobileMenuButton span {
+    position: absolute;
+  
+    left: 50%;
+  
+    width: 13px;
+    height: 1px;
+  
+    background:
+      rgba(
+        236,
+        234,
+        229,
+        0.72
+      );
+  
+    transform:
+      translateX(-50%);
+  }
+  
+  .mobileMenuButton span:first-child {
+    top: 13px;
+  }
+  
+  .mobileMenuButton span:last-child {
+    bottom: 13px;
+  }
+  
+  .mobileMenuButton:focus-visible {
+    outline:
+      1px solid
+      rgba(
+        117,
+        255,
+        180,
+        0.34
+      );
+  
+    outline-offset: 2px;
+  }
+  
+  .mobileMenuOverlay {
+    display: none;
+  }
+  
+  
+  /* ========================================
+     TABLET
+  ======================================== */
+  
+  @media (max-width: 1100px) {
+    .workspaceShell {
+      grid-template-columns:
+        200px minmax(0, 1fr);
+    }
+  }
+  
+  
+  /* ========================================
+     MOBILE
+  ======================================== */
+  
+  @media (max-width: 780px) {
+    .workspaceShell {
+      grid-template-columns: 1fr;
+    }
+  
+    .workspaceMain {
+      grid-column: 1;
+    }
+  
+    .workspaceTopbar {
+      z-index: 80;
+  
+      padding:
+        0 10px 0 17px;
+    }
+  
+    .workspaceBreadcrumb span:nth-child(1),
+    .workspaceBreadcrumb i:nth-child(2),
+    .workspaceBreadcrumb span:nth-child(3),
+    .workspaceBreadcrumb i:nth-child(4) {
+      display: none;
+    }
+  
+    .mobileMenuButton {
+      position: relative;
+  
+      display: block;
+    }
+  
+    .workspaceSidebar {
+      position: fixed;
+  
+      z-index: 100;
+  
+      top: 0;
+      bottom: 0;
+      left: 0;
+  
+      grid-column: auto;
+      grid-row: auto;
+  
+      width:
+        min(
+          78vw,
+          280px
+        );
+  
+      height: 100svh;
+  
+      visibility: visible;
+  
+      transform:
+        translate3d(
+          -105%,
+          0,
+          0
+        );
+  
+      transition:
+        transform 220ms
+          cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+          ),
+        box-shadow 220ms ease;
+  
+      box-shadow: none;
+  
+      will-change: transform;
+    }
+  
+    .workspaceSidebarOpen {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+  
+      box-shadow:
+        18px 0 45px
+        rgba(
+          0,
+          0,
+          0,
+          0.38
+        );
+    }
+  
+    .mobileMenuOverlay {
+      position: fixed;
+  
+      z-index: 90;
+  
+      inset: 0;
+  
+      display: block;
+  
+      padding: 0;
+  
+      border: 0;
+  
+      background:
+        rgba(
+          0,
+          0,
+          0,
+          0.44
+        );
+  
+      cursor: default;
+  
+      animation:
+        mobileWorkspaceOverlayIn
+        160ms ease;
+    }
+  
+    .navItem {
+      font-size: 12px;
+    }
+  }
+  
+  
+  /* ========================================
+     SMALL MOBILE
+  ======================================== */
+  
+  @media (max-width: 480px) {
+    .workspaceTopbar {
+      padding-left: 14px;
+    }
+  
+    .workspaceBreadcrumb {
+      font-size: 7px;
+    }
+  }
+  
+  
+  /* ========================================
+     ANIMATION
+  ======================================== */
+  
+  @keyframes mobileWorkspaceOverlayIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  
+  /* ========================================
+     REDUCED MOTION
+  ======================================== */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .workspaceSidebar {
+      transition-duration: 0.01ms;
+    }
+  
+    .mobileMenuOverlay {
+      animation: none;
+    }
+  }

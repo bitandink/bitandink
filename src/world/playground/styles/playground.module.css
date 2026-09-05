@@ -1,0 +1,3853 @@
+/*
+ * Playground-only styles extracted from the old bitandink.module.css.
+ * Generated from the CSS classes actually referenced by PlaygroundView.tsx.
+ *
+ * After copying this file to:
+ *   src/world/playground/styles/playground.module.css
+ *
+ * change PlaygroundView.tsx to:
+ *   import styles from "../styles/playground.module.css";
+ */
+
+/* ========================================
+   DOCUMENT
+======================================== */
+
+.currentDocument {
+    width:
+      min(820px,
+        calc(100% - 72px));
+  
+    margin:
+      0 auto;
+  
+    padding:
+      clamp(70px,
+        10vh,
+        120px) 0 120px;
+  }
+  
+  .documentIndex {
+    display: block;
+  
+    margin-bottom:
+      26px;
+  
+    color:
+      rgba(236,
+        234,
+        229,
+        0.4);
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    letter-spacing:
+      0.15em;
+  }
+  
+  /* ========================================
+     PLAYGROUND
+  ======================================== */
+  
+  .playgroundDocument {
+    width:
+      min(
+        1040px,
+        calc(100% - 72px)
+      );
+  }
+  
+  .playgroundHeading {
+    max-width: 720px;
+  
+    margin-bottom:
+      clamp(
+        54px,
+        7vh,
+        80px
+      );
+  }
+  
+  .playgroundHeading h2 {
+    margin:
+      18px 0 0;
+  
+    color: #ebe9e4;
+  
+    font-size:
+      clamp(
+        58px,
+        6.4vw,
+        96px
+      );
+  
+    font-weight: 440;
+  
+    line-height: 0.9;
+  
+    letter-spacing: -0.065em;
+  }
+  
+  .playgroundHeading > p {
+    margin:
+      30px 0 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.72
+      );
+  
+    font-size: 15px;
+  
+    line-height: 1.8;
+  
+    word-break: keep-all;
+  }
+  
+  .playgroundAside {
+    display: block;
+  
+    margin-top: 7px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.42
+      );
+  
+    font-size: 13px;
+  
+    line-height: 1.8;
+  }
+  
+  .playgroundStatus {
+    display: block;
+  
+    margin-top: 26px;
+  
+    color:
+      rgba(
+        209,
+        190,
+        109,
+        0.72
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 10px;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  /* ========================================
+     PLAYGROUND STAGE
+  ======================================== */
+  
+  .playgroundStage {
+    position: relative;
+  
+    min-height: 650px;
+  
+    overflow: hidden;
+  
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.065
+      );
+  
+    border-radius: 16px;
+  
+    background:
+      radial-gradient(
+        circle at 68% 72%,
+        rgba(
+          106,
+          82,
+          46,
+          0.12
+        ),
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.012
+        ),
+        rgba(
+          0,
+          0,
+          0,
+          0.1
+        )
+      );
+  
+    isolation: isolate;
+  }
+  
+  .playgroundStage::before {
+    content: "";
+  
+    position: absolute;
+  
+    inset: 0;
+  
+    z-index: -1;
+  
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 31px,
+        rgba(
+          255,
+          255,
+          255,
+          0.012
+        ) 32px
+      );
+  
+    opacity: 0.6;
+  
+    pointer-events: none;
+  }
+  
+  .playgroundHint {
+    position: absolute;
+  
+    top: 28px;
+    left: 30px;
+  
+    z-index: 8;
+  
+    width: 220px;
+  
+    padding:
+      14px 16px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.12
+      );
+  
+    background:
+      rgba(
+        10,
+        11,
+        13,
+        0.74
+      );
+  
+    backdrop-filter:
+      blur(10px);
+  }
+  
+  .playgroundHint span {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.42
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  .playgroundHint p {
+    margin:
+      8px 0 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.6
+      );
+  
+    font-size: 12px;
+  
+    line-height: 1.7;
+  
+    word-break: keep-all;
+  }
+  
+  /* ========================================
+     FLOATING DATA
+  ======================================== */
+  
+  .playData {
+    position: absolute;
+  
+    z-index: 3;
+  
+    display: grid;
+  
+    place-items: center;
+  
+    width: 44px;
+    height: 44px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        117,
+        255,
+        180,
+        0.16
+      );
+  
+    border-radius: 50%;
+  
+    background:
+      rgba(
+        117,
+        255,
+        180,
+        0.045
+      );
+  
+    box-shadow:
+      0 0 24px
+      rgba(
+        117,
+        255,
+        180,
+        0.06
+      );
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.62
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    cursor: pointer;
+  
+    animation:
+      playgroundDataFloat 5.6s
+      ease-in-out
+      infinite;
+  
+    transition:
+      border-color 140ms ease,
+      color 140ms ease,
+      transform 140ms ease;
+  }
+  
+  .playData:hover {
+    border-color:
+      rgba(
+        117,
+        255,
+        180,
+        0.38
+      );
+  
+    color:
+      rgba(
+        190,
+        255,
+        210,
+        0.9
+      );
+  }
+  
+  .playDataOne {
+    top: 23%;
+    left: 58%;
+  }
+  
+  .playDataTwo {
+    top: 36%;
+    left: 78%;
+  
+    animation-delay: -1.4s;
+  }
+  
+  .playDataThree {
+    top: 34%;
+    left: 68%;
+  
+    animation-delay: -2.8s;
+  }
+  
+  .playDataFour {
+    top: 71%;
+    left: 85%;
+  
+    animation-delay: -4s;
+  }
+  
+  .playDataFive {
+    top: 19%;
+    left: 34%;
+  
+    width: 38px;
+    height: 38px;
+  
+    animation-delay: -0.8s;
+  }
+  
+  .playDataSix {
+    top: 64%;
+    left: 55%;
+  
+    width: 42px;
+    height: 42px;
+  
+    font-size: 8px;
+  
+    animation-delay: -3.2s;
+  }
+  
+  .playDataSeven {
+    top: 47%;
+    left: 24%;
+  
+    width: 36px;
+    height: 36px;
+  
+    animation-delay: -2.1s;
+  }
+  
+  .playDataEight {
+    top: 30%;
+    left: 43%;
+  
+    width: 34px;
+    height: 34px;
+  
+    animation-delay: -4.7s;
+  }
+  
+  .playDataNine {
+    top: 77%;
+    left: 70%;
+  
+    width: 38px;
+    height: 38px;
+  
+    animation-delay: -1.1s;
+  }
+  
+  .playDataTen {
+    top: 60%;
+    left: 17%;
+  
+    width: 32px;
+    height: 32px;
+  
+    font-size: 8px;
+  
+    animation-delay: -5.1s;
+  }
+  
+  .playDataEleven {
+    top: 23%;
+    left: 89%;
+  
+    width: 42px;
+    height: 42px;
+  
+    animation-delay: -2.6s;
+  }
+  
+  .playDataTwelve {
+    top: 73%;
+    left: 37%;
+  
+    width: 35px;
+    height: 35px;
+  
+    animation-delay: -3.8s;
+  }
+  
+  /* ========================================
+     ACTORS
+  ======================================== */
+  
+  .actorButton,
+  .pamaActor,
+  .bitandinkActor {
+    padding: 0;
+  
+    border: 0;
+  
+    background: transparent;
+  
+    cursor: pointer;
+  }
+  
+  .hoduActor,
+  .beanActor,
+  .pamaActor,
+  .bitandinkActor {
+    position: absolute;
+  
+    z-index: 5;
+  
+    transition:
+      left 640ms
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+      right 640ms
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+      bottom 640ms
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        ),
+      transform 420ms ease,
+      opacity 420ms ease;
+  }
+  
+  .hoduActor {
+    left: 50%;
+    bottom: 42px;
+  
+    z-index: 8;
+  
+    width: 158px;
+  
+    transform-origin:
+      50% 100%;
+  }
+  
+  .hoduActor img {
+    display: block;
+  
+    width: 100%;
+    height: auto;
+  
+    filter:
+      drop-shadow(
+        0 16px 24px
+        rgba(
+          0,
+          0,
+          0,
+          0.3
+        )
+      );
+  
+    user-select: none;
+  
+    pointer-events: none;
+  
+    transition:
+      opacity 160ms ease,
+      transform 220ms ease;
+  }
+  
+  .beanActor {
+    left: 28%;
+    bottom: 150px;
+  
+    z-index: 7;
+  
+    width: 168px;
+  
+    opacity: 0.52;
+  
+    transform:
+      scale(0.92);
+  }
+  
+  .beanActor img,
+  .pamaActor img,
+  .bitandinkActor img {
+    display: block;
+  
+    width: 100%;
+    height: auto;
+  
+    filter:
+      drop-shadow(
+        0 14px 22px
+        rgba(
+          0,
+          0,
+          0,
+          0.26
+        )
+      );
+  
+    user-select: none;
+  
+    pointer-events: none;
+  }
+  
+  .pamaActor {
+    left: 28px;
+    bottom: 30px;
+  
+    width: 150px;
+  }
+  
+  .bitandinkActor {
+    right: 34px;
+    bottom: 50%;
+  
+    transform: translateY(50%);
+  
+    z-index: 4;
+  
+    width: 86px;
+  
+    opacity: 0.68;
+  }
+  
+  .actorBubble,
+  .hoduBubble,
+  .beanBubble {
+    position: absolute;
+  
+    z-index: 9;
+  
+    min-width: 92px;
+  
+    padding:
+      9px 11px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.14
+      );
+  
+    border-radius: 8px;
+  
+    background:
+      rgba(
+        10,
+        11,
+        13,
+        0.86
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.72
+      );
+  
+    font-size: 11px;
+  
+    line-height: 1.55;
+  
+    white-space: nowrap;
+  
+    box-shadow:
+      0 12px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.2
+      );
+  }
+  
+  .actorBubble {
+    left: 50%;
+    bottom: calc(100% + 8px);
+  
+    transform:
+      translateX(-50%);
+  }
+  
+  .hoduBubble {
+    left: 58%;
+    bottom: 88%;
+  
+    transform:
+      translateX(-50%);
+  }
+  
+  .beanBubble {
+    left: 18%;
+    bottom: 84%;
+  
+    transform:
+      translateX(-50%);
+  }
+  
+  /* ========================================
+     HODU SEQUENCE
+  ======================================== */
+  
+  .playgroundScene_chasing
+  .hoduActor {
+    left: 56%;
+    bottom: 42px;
+  
+    width: 235px;
+  
+    transform:
+      translateY(-24px)
+      scale(1.02);
+  }
+  
+  .playgroundScene_chasing
+  .playDataTwo {
+    transform:
+      translate3d(
+        88px,
+        -32px,
+        0
+      );
+  
+    transition:
+      transform 1.2s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+  }
+  
+  .playgroundScene_fallen
+  .hoduActor {
+    left: 54%;
+    bottom: 12px;
+  
+    width: 195px;
+  
+    transform:
+      translateY(8px)
+      scale(0.98);
+  }
+  
+  .playgroundScene_fallen
+  .beanActor {
+    opacity: 0.72;
+  }
+  
+  .playgroundScene_comforting
+  .hoduActor {
+    left: 50%;
+    bottom: 28px;
+  
+    transform:
+      translateY(4px)
+      scale(0.98);
+  }
+  
+  .playgroundScene_gift
+  .hoduActor {
+    left: 47%;
+    bottom: 42px;
+  
+    transform:
+      translateY(0)
+      scale(1.02);
+  }
+  
+  .playgroundScene_comforting
+  .beanActor,
+  .playgroundScene_gift
+  .beanActor {
+    left: 28%;
+  
+    opacity: 1;
+  
+    transform:
+      scale(1);
+  }
+  
+  /* ========================================
+     DATA BALLOON
+  ======================================== */
+  
+  .dataBalloon {
+    position: absolute;
+  
+    padding: 0;
+    appearance: none;
+    font: inherit;
+    cursor: pointer;
+  
+    left: 59%;
+    bottom: 265px;
+  
+    z-index: 12;
+  
+    display: grid;
+  
+    place-items: center;
+  
+    width: 76px;
+    height: 76px;
+  
+    border:
+      1px solid
+      rgba(
+        117,
+        255,
+        180,
+        0.35
+      );
+  
+    border-radius: 50%;
+  
+    background:
+      radial-gradient(
+        circle at 35% 28%,
+        rgba(
+          255,
+          255,
+          255,
+          0.22
+        ),
+        transparent 18%
+      ),
+      rgba(
+        117,
+        255,
+        180,
+        0.06
+      );
+  
+    box-shadow:
+      0 0 38px
+      rgba(
+        117,
+        255,
+        180,
+        0.11
+      );
+  
+    opacity: 0;
+  
+    transform:
+      translateY(12px)
+      scale(0.86);
+  
+    transition:
+      opacity 420ms ease,
+      transform 520ms
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        );
+  }
+  
+  .dataBalloon span {
+    color:
+      rgba(
+        188,
+        255,
+        210,
+        0.82
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 11px;
+  }
+  
+  .dataBalloon i {
+    position: absolute;
+  
+    top: 100%;
+  
+    width: 1px;
+    height: 150px;
+  
+    transform:
+      translateX(1px)
+      rotate(-3deg);
+  
+    transform-origin: top center;
+  
+    background:
+      linear-gradient(
+        rgba(
+          236,
+          234,
+          229,
+          0.38
+        ),
+        rgba(
+          236,
+          234,
+          229,
+          0.06
+        )
+      );
+  }
+  
+  .playgroundScene_gift
+  .dataBalloon {
+    left: 45%;
+    bottom: 278px;
+  
+    opacity: 1;
+  
+    transform:
+      translateY(0)
+      scale(1);
+  }
+  
+  /* ========================================
+     PLAYGROUND FOOTER DETAILS
+  ======================================== */
+  
+  .playgroundTip {
+    position: absolute;
+  
+    right: 28px;
+    bottom: 18px;
+  
+    margin: 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.25
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  }
+  
+  .playAgain {
+    position: absolute;
+  
+    right: 28px;
+    top: 28px;
+  
+    z-index: 10;
+  
+    padding:
+      7px 10px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.11
+      );
+  
+    background:
+      rgba(
+        10,
+        11,
+        13,
+        0.6
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.48
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    cursor: pointer;
+  
+    transition:
+      color 140ms ease,
+      border-color 140ms ease;
+  }
+  
+  .playAgain:hover {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.84
+      );
+  
+    border-color:
+      rgba(
+        236,
+        234,
+        229,
+        0.26
+      );
+  }
+  
+  /* ========================================
+     WORKSPACE DOCUMENT SWITCHING
+  ======================================== */
+  
+  .workspaceDocument {
+    opacity: 1;
+    transition:
+      opacity 90ms linear,
+      filter 90ms linear;
+  }
+  
+  /* ========================================
+     CSS LAB
+  ======================================== */
+  
+  .cssLabPanel {
+    position: absolute;
+  
+    top: 86px;
+    right: 34px;
+  
+    z-index: 30;
+  
+    width:
+      min(
+        520px,
+        calc(100% - 68px)
+      );
+  
+    overflow: hidden;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.12
+      );
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(
+        13,
+        14,
+        17,
+        0.94
+      );
+  
+    box-shadow:
+      0 22px 56px
+      rgba(
+        0,
+        0,
+        0,
+        0.34
+      );
+  
+    backdrop-filter:
+      blur(18px);
+  }
+  
+  .cssLabHeader {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 20px;
+  
+    padding:
+      14px 16px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.08
+      );
+  
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      );
+  }
+  
+  .cssLabHeader > div {
+    display: flex;
+  
+    align-items: baseline;
+  
+    gap: 10px;
+  }
+  
+  .cssLabHeader span {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.72
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.1em;
+  }
+  
+  .cssLabHeader strong {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.42
+      );
+  
+    font-size: 10px;
+    font-weight: 400;
+  }
+  
+  .cssLabClose {
+    display: grid;
+  
+    place-items: center;
+  
+    width: 28px;
+    height: 28px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.1
+      );
+  
+    border-radius: 6px;
+  
+    background: transparent;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.56
+      );
+  
+    font-size: 16px;
+  
+    cursor: pointer;
+  }
+  
+  .cssLabClose:hover {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.92
+      );
+  
+    border-color:
+      rgba(
+        236,
+        234,
+        229,
+        0.22
+      );
+  }
+  
+  .cssLabBody {
+    display: grid;
+  
+    grid-template-columns:
+      190px minmax(0, 1fr);
+  
+    min-height: 330px;
+  }
+  
+  .cssLabControls {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 18px;
+  
+    padding:
+      18px 16px;
+  
+    border-right:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.07
+      );
+  }
+  
+  .cssLabControls label {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 9px;
+  }
+  
+  .cssLabControls label > span {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 10px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.52
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  }
+  
+  .cssLabControls em {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.56
+      );
+  
+    font-style: normal;
+  }
+  
+  .cssLabControls input[type="range"] {
+    width: 100%;
+  
+    accent-color:
+      rgba(
+        166,
+        244,
+        191,
+        0.76
+      );
+  
+    cursor: pointer;
+  }
+  
+  .cssLabPreviewWrap {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 16px;
+  
+    min-width: 0;
+  
+    padding:
+      18px;
+  }
+  
+  .cssLabPreview {
+    display: flex;
+  
+    flex: 1;
+  
+    flex-direction: column;
+  
+    justify-content: center;
+  
+    min-height: 180px;
+  
+    padding:
+      24px;
+  
+    border:
+      1px solid
+      rgba(
+        166,
+        244,
+        191,
+        0.14
+      );
+  
+    background:
+      rgba(
+        166,
+        244,
+        191,
+        0.035
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.82
+      );
+  
+    transform-origin: center;
+  
+    transition:
+      font-size 120ms ease,
+      border-radius 120ms ease,
+      letter-spacing 120ms ease,
+      transform 120ms ease,
+      opacity 120ms ease;
+  }
+  
+  .cssLabPreview > span {
+    margin-bottom: 18px;
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.64
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  .cssLabPreview strong {
+    font-size: 1em;
+  
+    font-weight: 520;
+  
+    line-height: 1.45;
+  
+    word-break: keep-all;
+  }
+  
+  .cssLabPreview p {
+    margin:
+      10px 0 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.5
+      );
+  
+    font-size: 0.62em;
+  
+    line-height: 1.7;
+  
+    word-break: keep-all;
+  }
+  
+  .cssLabCode {
+    margin: 0;
+  
+    overflow: auto;
+  
+    padding:
+      12px 14px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.07
+      );
+  
+    border-radius: 8px;
+  
+    background:
+      rgba(
+        0,
+        0,
+        0,
+        0.18
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.56
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    line-height: 1.65;
+  
+    white-space: pre-wrap;
+  }
+  
+  @media (max-width: 900px) {
+  .cssLabPanel {
+      top: 78px;
+      right: 18px;
+  
+      width:
+        calc(100% - 36px);
+    }
+  
+  .cssLabBody {
+      grid-template-columns: 1fr;
+    }
+  
+  .cssLabControls {
+      display: grid;
+  
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(
+            0,
+            1fr
+          )
+        );
+  
+      border-right: 0;
+  
+      border-bottom:
+        1px solid
+        rgba(
+          236,
+          234,
+          229,
+          0.07
+        );
+    }
+  
+  .cssLabPreview {
+      min-height: 150px;
+    }
+  }
+  
+  /* ========================================
+     ENV PRIVATE CHANNEL
+  ======================================== */
+  
+  .envPanel {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    z-index: 32;
+    width: min(560px, calc(100% - 68px));
+    overflow: hidden;
+    border: 1px solid rgba(117, 255, 180, 0.14);
+    border-radius: 12px;
+    background: rgba(8, 12, 10, 0.96);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+    transform: translateX(-50%);
+    backdrop-filter: blur(18px);
+  }
+  
+  .envPanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 48px;
+    padding: 0 14px 0 16px;
+    border-bottom: 1px solid rgba(117, 255, 180, 0.08);
+    background: rgba(117, 255, 180, 0.025);
+  }
+  
+  .envPanelHeader > div {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  
+  .envPanelHeader span,
+  .envPanelHeader strong,
+  .envTerminal,
+  .envNotice span,
+  .envNoteFooter,
+  .envSendStatus,
+  .envFootnote {
+    font-family: "SFMono-Regular", Consolas, monospace;
+  }
+  
+  .envPanelHeader span {
+    color: rgba(166, 244, 191, 0.78);
+    font-size: 10px;
+  }
+  
+  .envPanelHeader strong {
+    color: rgba(236, 234, 229, 0.34);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+  }
+  
+  .envPanelClose {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid rgba(236, 234, 229, 0.08);
+    border-radius: 6px;
+    background: transparent;
+    color: rgba(236, 234, 229, 0.58);
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .envTerminal {
+    min-height: 154px;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(117, 255, 180, 0.07);
+    color: rgba(166, 244, 191, 0.5);
+    font-size: 10px;
+    line-height: 1.85;
+  }
+  
+  .envTerminal p {
+    margin: 0;
+  }
+  
+  .envTerminalReady {
+    color: rgba(166, 244, 191, 0.86);
+  }
+  
+  .envNoteArea {
+    padding: 20px;
+  }
+  
+  .envNotice {
+    margin-bottom: 16px;
+  }
+  
+  .envNotice span {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(166, 244, 191, 0.68);
+    font-size: 9px;
+  }
+  
+  .envNotice p {
+    margin: 0;
+    color: rgba(236, 234, 229, 0.68);
+    font-size: 13px;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  
+  .envNotice small {
+    display: block;
+    margin-top: 7px;
+    color: rgba(236, 234, 229, 0.28);
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  
+  .envNoteArea textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 130px;
+    resize: vertical;
+    padding: 14px;
+    border: 1px solid rgba(117, 255, 180, 0.12);
+    border-radius: 8px;
+    outline: 0;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(236, 234, 229, 0.82);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  
+  .envNoteArea textarea:focus {
+    border-color: rgba(117, 255, 180, 0.32);
+    box-shadow: 0 0 0 2px rgba(117, 255, 180, 0.035);
+  }
+  
+  .envNoteArea textarea::placeholder {
+    color: rgba(236, 234, 229, 0.2);
+  }
+  
+  .envNoteFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 10px;
+    color: rgba(236, 234, 229, 0.26);
+    font-size: 8px;
+  }
+  
+  .envNoteFooter button {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(117, 255, 180, 0.18);
+    border-radius: 6px;
+    background: rgba(117, 255, 180, 0.05);
+    color: rgba(166, 244, 191, 0.76);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 9px;
+    cursor: pointer;
+  }
+  
+  .envNoteFooter button:disabled {
+    opacity: 0.34;
+    cursor: default;
+  }
+  
+  .envSendStatus {
+    margin: 14px 0 0;
+    white-space: pre-wrap;
+    color: rgba(236, 234, 229, 0.42);
+    font-size: 9px;
+    line-height: 1.7;
+  }
+  
+  .envSendSuccess {
+    color: rgba(166, 244, 191, 0.72);
+  }
+  
+  .envSendError {
+    color: rgba(255, 180, 180, 0.72);
+  }
+  
+  .envFootnote {
+    margin: 18px 0 0;
+    color: rgba(236, 234, 229, 0.2);
+    font-size: 8px;
+  }
+  
+  @media (max-width: 780px) {
+  .envPanel {
+      top: 58px;
+      width: calc(100% - 28px);
+      max-height: calc(100% - 76px);
+      overflow-y: auto;
+    }
+  
+  .envTerminal {
+      min-height: 138px;
+      padding: 16px;
+    }
+  
+  .envNoteArea {
+      padding: 16px;
+    }
+  
+  .envNoteArea textarea {
+      min-height: 120px;
+      font-size: 16px;
+    }
+  }
+  
+  /* ========================================
+     JSON BALLOON POP + SNACK RAIN
+  ======================================== */
+  
+  .dataBalloon:disabled {
+    cursor: default;
+  }
+  
+  .dataBalloonPopped {
+    pointer-events: none;
+  
+    animation:
+      jsonBalloonPop
+      180ms
+      ease-out
+      forwards;
+  }
+  
+  .snackRain {
+    position: absolute;
+  
+    z-index: 18;
+  
+    left: 47%;
+    bottom: 300px;
+  
+    width: 1px;
+    height: 1px;
+  
+    pointer-events: none;
+  }
+  
+  .snackRain span {
+    --snack-x: 0px;
+    --snack-rotate: 0deg;
+    --snack-delay: 0ms;
+  
+    position: absolute;
+  
+    top: 0;
+    left: 0;
+  
+    display: block;
+  
+    opacity: 0;
+  
+    font-size: 22px;
+    line-height: 1;
+  
+    filter:
+      drop-shadow(
+        0 5px 6px
+        rgba(0, 0, 0, 0.24)
+      );
+  
+    animation:
+      snackFall
+      1050ms
+      cubic-bezier(
+        0.2,
+        0.72,
+        0.34,
+        1
+      )
+      var(--snack-delay)
+      forwards;
+  }
+  
+  .playgroundScene_gift:has(
+    .dataBalloonPopped
+  )
+  .hoduActor {
+    animation:
+      hoduSnackHappy
+      320ms
+      ease-in-out
+      3
+      alternate;
+  }
+  
+  @media (max-width: 780px) {
+  .snackRain {
+      left: 47%;
+      bottom: 245px;
+    }
+  
+  .snackRain span {
+      font-size: 18px;
+    }
+  }
+  
+  /* ========================================
+     TXT VIEWER — HODU LETTER HEIST
+  ======================================== */
+  
+  .txtViewerPanel {
+    position: absolute;
+  
+    z-index: 34;
+  
+    top: 72px;
+    left: 50%;
+  
+    width:
+      min(
+        650px,
+        calc(100% - 64px)
+      );
+  
+    overflow: hidden;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.1
+      );
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(
+        12,
+        13,
+        16,
+        0.97
+      );
+  
+    box-shadow:
+      0 26px 70px
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      );
+  
+    transform:
+      translateX(-50%);
+  
+    backdrop-filter:
+      blur(18px);
+  }
+  
+  .txtViewerHeader {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    min-height: 48px;
+  
+    padding:
+      0 14px 0 17px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.07
+      );
+  }
+  
+  .txtViewerHeader > div {
+    display: flex;
+  
+    align-items: baseline;
+  
+    gap: 12px;
+  }
+  
+  .txtViewerHeader span,
+  .txtViewerHeader strong,
+  .txtMeta,
+  .txtViewerFooter {
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  }
+  
+  .txtViewerHeader span {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.72
+      );
+  
+    font-size: 9px;
+  
+    letter-spacing:
+      0.1em;
+  }
+  
+  .txtViewerHeader strong {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.38
+      );
+  
+    font-size: 9px;
+  
+    font-weight: 400;
+  }
+  
+  .txtViewerClose {
+    display: grid;
+  
+    place-items: center;
+  
+    width: 30px;
+    height: 30px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.08
+      );
+  
+    border-radius: 6px;
+  
+    background:
+      transparent;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.56
+      );
+  
+    font-size: 16px;
+  
+    cursor: pointer;
+  }
+  
+  .txtViewerBody {
+    position: relative;
+  
+    min-height: 400px;
+  
+    overflow: hidden;
+  
+    padding:
+      44px 42px 120px;
+  
+    background:
+      radial-gradient(
+        circle at 50% 35%,
+        rgba(
+          255,
+          255,
+          255,
+          0.018
+        ),
+        transparent 58%
+      );
+  }
+  
+  .txtPaper {
+    position: relative;
+  
+    z-index: 2;
+  
+    max-width: 470px;
+  
+    margin:
+      0 auto;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.78
+      );
+  
+    font-size: 17px;
+  
+    line-height: 2.05;
+  
+    letter-spacing:
+      -0.015em;
+  
+    word-break: keep-all;
+  }
+  
+  .txtPaper p {
+    margin:
+      0 0 13px;
+  }
+  
+  .txtPaper p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .txtCharacter {
+    position: relative;
+  
+    display: inline-block;
+  
+    min-width: 1em;
+  
+    text-align: center;
+  
+    transition:
+      transform 220ms ease,
+      opacity 150ms ease,
+      color 180ms ease;
+  }
+  
+  .txtCharacterMissing {
+    color:
+      transparent;
+  
+    opacity: 0.08;
+  
+    transform:
+      translateY(-3px)
+      scale(0.72);
+  }
+  
+  .txtCharacterNudged {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.82
+      );
+  
+    transform:
+      translate3d(
+        18px,
+        11px,
+        0
+      )
+      rotate(13deg);
+  }
+  
+  .txtMeta {
+    position: absolute;
+  
+    z-index: 3;
+  
+    top: 178px;
+    right: 28px;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 8px;
+  
+    width: 118px;
+  
+    padding:
+      10px 12px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.06
+      );
+  
+    border-radius: 7px;
+  
+    background:
+      rgba(
+        0,
+        0,
+        0,
+        0.12
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.28
+      );
+  
+    font-size: 8px;
+  }
+  
+  .txtMeta > span {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 9px;
+  }
+  
+  .txtMeta strong {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.58
+      );
+  
+    font-weight: 400;
+  
+    text-align: right;
+  }
+  
+  .txtHodu,
+  .txtBean,
+  .txtPama {
+    position: absolute;
+  
+    z-index: 8;
+  
+    bottom: 22px;
+  
+    pointer-events: none;
+  }
+  
+  .txtHodu img,
+  .txtBean img,
+  .txtPama img {
+    display: block;
+  
+    width: 100%;
+    height: auto;
+  
+    object-fit: contain;
+    object-position: center bottom;
+  
+    user-select: none;
+  
+    transition:
+      opacity 160ms ease,
+      transform 220ms ease;
+  }
+  
+  .txtHodu {
+    left: -150px;
+  
+    width: 145px;
+  }
+  
+  .txtHoduApproach {
+    width: 195px;
+  
+    animation:
+      txtHoduApproach
+      1950ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      forwards;
+  }
+  
+  .txtHoduEscape {
+    left: 42%;
+  
+    width: 165px;
+  
+    animation:
+      txtHoduEscape
+      2050ms
+      cubic-bezier(
+        0.3,
+        0.72,
+        0.3,
+        1
+      )
+      forwards;
+  }
+  
+  .txtStolenLetter {
+    position: absolute;
+  
+    top: 17px;
+    right: -12px;
+  
+    display: grid;
+  
+    place-items: center;
+  
+    width: 24px;
+    height: 24px;
+  
+    border:
+      1px solid
+      rgba(
+        166,
+        244,
+        191,
+        0.24
+      );
+  
+    border-radius: 5px;
+  
+    background:
+      rgba(
+        12,
+        13,
+        16,
+        0.9
+      );
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.9
+      );
+  
+    font-size: 13px;
+  
+    transform:
+      rotate(8deg);
+  
+    box-shadow:
+      0 5px 16px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      );
+  }
+  
+  .txtBean {
+    left: 20px;
+  
+    width: 155px;
+  
+    opacity: 0.96;
+  }
+  
+  .txtBeanRetrieve {
+    width: 190px;
+  
+    animation:
+      txtBeanRetrieve
+      1950ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      both;
+  }
+  
+  .txtBeanStare {
+    transform:
+      translateX(6px)
+      rotate(2deg);
+  }
+  
+  .txtBeanPamaScale {
+    width: 176px;
+  }
+  
+  .txtPama {
+    right: -150px;
+  
+    width: 135px;
+  }
+  
+  .txtPama img {
+    display: block;
+  
+    opacity: 1;
+  
+    visibility: visible;
+  }
+  
+  .txtPamaWalk {
+    animation:
+      txtPamaWalkIn
+      1850ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      forwards;
+  }
+  
+  .txtPamaPause {
+    right: 110px;
+  }
+  
+  .txtPamaPause {
+    width: 145px;
+  }
+  
+  .txtPamaLeave {
+    right: 110px;
+  
+    animation:
+      txtPamaLeave
+      2200ms
+      ease-in
+      forwards;
+  }
+  
+  .txtResidentBubble {
+    position: absolute;
+  
+    left: 50%;
+    bottom: calc(100% - 3px);
+  
+    min-width: max-content;
+  
+    padding:
+      6px 9px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.08
+      );
+  
+    border-radius: 7px;
+  
+    background:
+      rgba(
+        12,
+        13,
+        16,
+        0.94
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.68
+      );
+  
+    font-size: 10px;
+  
+    line-height: 1.4;
+  
+    transform:
+      translateX(-50%);
+  
+    white-space: nowrap;
+  }
+  
+  .txtPamaBubble {
+    left: 28%;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.58
+      );
+  }
+  
+  .txtNudgeMark {
+    position: absolute;
+  
+    z-index: 9;
+  
+    top: 63px;
+    left: 45%;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.24
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 8px;
+  
+    transform:
+      rotate(-8deg);
+  
+    animation:
+      txtNudgeMark
+      650ms
+      ease
+      forwards;
+  }
+  
+  .txtViewerFooter {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    min-height: 36px;
+  
+    padding:
+      0 17px;
+  
+    border-top:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.06
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.2
+      );
+  
+    font-size: 8px;
+  
+    letter-spacing:
+      0.04em;
+  }
+  
+  @media (max-width: 780px) {
+  .txtViewerPanel {
+      top: 56px;
+  
+      width:
+        calc(100% - 24px);
+  
+      max-height:
+        calc(100% - 70px);
+  
+      overflow-y: auto;
+    }
+  
+  .txtViewerBody {
+      min-height: 410px;
+  
+      padding:
+        34px 20px 132px;
+    }
+  
+  .txtPaper {
+      padding-right: 0;
+  
+      font-size: 15px;
+  
+      line-height: 1.95;
+    }
+  
+  .txtMeta {
+      position: relative;
+  
+      top: auto;
+      right: auto;
+  
+      width: auto;
+  
+      margin:
+        24px 0 0;
+    }
+  
+  .txtHodu {
+      width: 122px;
+    }
+  
+  .txtHoduApproach {
+      width: 152px;
+    }
+  
+  .txtHoduEscape {
+      width: 132px;
+    }
+  
+  .txtBean {
+      left: 14px;
+  
+      width: 124px;
+    }
+  
+  .txtBeanRetrieve {
+      width: 150px;
+    }
+  
+  .txtBeanPamaScale {
+      width: 140px;
+    }
+  
+  .txtPama {
+      width: 106px;
+    }
+  
+  .txtPamaPause,
+    .txtPamaLeave {
+      right: 54px;
+    }
+  
+  .txtResidentBubble {
+      font-size: 9px;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+  .txtHoduApproach,
+    .txtHoduEscape,
+    .txtBeanRetrieve,
+    .txtPamaWalk,
+    .txtPamaLeave,
+    .txtNudgeMark {
+      animation-duration: 0.01ms;
+    }
+  
+  .txtCharacter {
+      transition-duration: 0.01ms;
+    }
+  }
+  
+  /* ========================================
+     TXT VIEWER — HIDE BASE PLAYGROUND ACTORS
+  ======================================== */
+  
+  .playgroundSceneTxtOpen .hoduActor,
+  .playgroundSceneTxtOpen .beanActor,
+  .playgroundSceneTxtOpen .pamaActor {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* ========================================
+     ACTIVITY LOG
+  ======================================== */
+  
+  .logPanel {
+    position: absolute;
+  
+    z-index: 35;
+  
+    top: 72px;
+    left: 50%;
+  
+    width:
+      min(
+        720px,
+        calc(100% - 64px)
+      );
+  
+    overflow: hidden;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.1
+      );
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(
+        9,
+        10,
+        12,
+        0.97
+      );
+  
+    box-shadow:
+      0 26px 70px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      );
+  
+    transform:
+      translateX(-50%);
+  
+    backdrop-filter:
+      blur(18px);
+  }
+  
+  .logPanelHeader {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    min-height: 48px;
+  
+    padding:
+      0 14px 0 17px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.07
+      );
+  
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.012
+      );
+  }
+  
+  .logPanelHeader > div {
+    display: flex;
+  
+    align-items: baseline;
+  
+    gap: 12px;
+  }
+  
+  .logPanelHeader span,
+  .logPanelHeader strong,
+  .logTerminal,
+  .logPanelFooter {
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      monospace;
+  }
+  
+  .logPanelHeader span {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.76
+      );
+  
+    font-size: 9px;
+  
+    letter-spacing:
+      0.1em;
+  }
+  
+  .logPanelHeader strong {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.36
+      );
+  
+    font-size: 9px;
+  
+    font-weight: 400;
+  }
+  
+  .logPanelClose {
+    display: grid;
+  
+    place-items: center;
+  
+    width: 30px;
+    height: 30px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.08
+      );
+  
+    border-radius: 6px;
+  
+    background:
+      transparent;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.58
+      );
+  
+    font-size: 16px;
+  
+    cursor: pointer;
+  }
+  
+  .logTerminal {
+    min-height: 360px;
+    max-height: 430px;
+  
+    overflow-y: auto;
+  
+    padding:
+      20px 20px 24px;
+  
+    scrollbar-width: thin;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.58
+      );
+  
+    font-size: 10px;
+  
+    line-height: 1.75;
+  }
+  
+  .logRow {
+    display: grid;
+  
+    grid-template-columns:
+      68px 76px minmax(0, 1fr);
+  
+    align-items: baseline;
+  
+    gap: 8px;
+  
+    min-width: 0;
+  
+    padding:
+      2px 0;
+  }
+  
+  .logRow time {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.2
+      );
+  
+    font-variant-numeric:
+      tabular-nums;
+  }
+  
+  .logRow p {
+    min-width: 0;
+  
+    margin: 0;
+  
+    overflow-wrap:
+      anywhere;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.56
+      );
+  }
+  
+  .logLevel {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.34
+      );
+  
+    font-size: 9px;
+  
+    white-space: nowrap;
+  }
+  
+  .logLevel_OK,
+  .logLevel_SENT {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.72
+      );
+  }
+  
+  .logLevel_WARN,
+  .logLevel_THUD {
+    color:
+      rgba(
+        238,
+        200,
+        126,
+        0.76
+      );
+  }
+  
+  .logLevel_FAIL {
+    color:
+      rgba(
+        238,
+        137,
+        137,
+        0.76
+      );
+  }
+  
+  .logLevel_EVENT,
+  .logLevel_ACCESS {
+    color:
+      rgba(
+        150,
+        190,
+        255,
+        0.74
+      );
+  }
+  
+  .logLevel_TRACE {
+    color:
+      rgba(
+        194,
+        174,
+        238,
+        0.68
+      );
+  }
+  
+  .logRowSystem {
+    opacity: 0.58;
+  }
+  
+  .logRowSystem:first-of-type {
+    margin-top: 12px;
+  }
+  
+  .logPanelFooter {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    min-height: 36px;
+  
+    gap: 16px;
+  
+    padding:
+      0 17px;
+  
+    border-top:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.06
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.2
+      );
+  
+    font-size: 8px;
+  
+    letter-spacing:
+      0.04em;
+  }
+  
+  @media (max-width: 780px) {
+  .logPanel {
+      top: 56px;
+  
+      width:
+        calc(100% - 24px);
+    }
+  
+  .logTerminal {
+      min-height: 330px;
+      max-height: 390px;
+  
+      padding:
+        16px 14px 20px;
+  
+      font-size: 9px;
+    }
+  
+  .logRow {
+      grid-template-columns:
+        58px 66px minmax(0, 1fr);
+  
+      gap: 6px;
+    }
+  
+  .logPanelFooter {
+      padding:
+        0 13px;
+    }
+  }
+  
+  /* .log entry point — keep it readable above nearby actors */
+  .playDataSix {
+    z-index: 12;
+  
+    box-shadow:
+      0 0 0 1px
+      rgba(117, 255, 180, 0.035),
+      0 0 18px
+      rgba(117, 255, 180, 0.045);
+  }
+  
+  /* ========================================
+     README / PLAYGROUND MANIFESTO
+  ======================================== */
+  
+  .readmePanel {
+    position: absolute;
+  
+    z-index: 36;
+  
+    top: 64px;
+    left: 50%;
+  
+    width:
+      min(
+        760px,
+        calc(100% - 64px)
+      );
+  
+    max-height:
+      calc(100% - 92px);
+  
+    overflow: hidden;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.1
+      );
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(
+        12,
+        13,
+        16,
+        0.98
+      );
+  
+    box-shadow:
+      0 26px 72px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      );
+  
+    transform:
+      translateX(-50%);
+  
+    backdrop-filter:
+      blur(18px);
+  }
+  
+  .readmeHeader {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    min-height: 48px;
+  
+    padding:
+      0 14px 0 18px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.07
+      );
+  }
+  
+  .readmeHeader > div {
+    display: flex;
+  
+    align-items: baseline;
+  
+    gap: 12px;
+  }
+  
+  .readmeHeader span,
+  .readmeHeader strong,
+  .readmeEyebrow,
+  .readmeSection h3,
+  .readmeStatusList,
+  .readmeFooter {
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      monospace;
+  }
+  
+  .readmeHeader span {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.76
+      );
+  
+    font-size: 9px;
+  
+    letter-spacing:
+      0.08em;
+  }
+  
+  .readmeHeader strong {
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.34
+      );
+  
+    font-size: 9px;
+  
+    font-weight: 400;
+  }
+  
+  .readmeClose {
+    display: grid;
+  
+    place-items: center;
+  
+    width: 30px;
+    height: 30px;
+  
+    padding: 0;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.08
+      );
+  
+    border-radius: 6px;
+  
+    background:
+      transparent;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.58
+      );
+  
+    font-size: 16px;
+  
+    cursor: pointer;
+  }
+  
+  .readmeBody {
+    max-height:
+      calc(100vh - 180px);
+  
+    overflow-y: auto;
+  
+    padding:
+      34px 38px 30px;
+  
+    scrollbar-width: thin;
+  }
+  
+  .readmeIntro {
+    padding-bottom: 28px;
+  
+    border-bottom:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.06
+      );
+  }
+  
+  .readmeEyebrow {
+    display: block;
+  
+    margin-bottom: 14px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.88
+      );
+  
+    font-size: 19px;
+  
+    font-weight: 600;
+  
+    letter-spacing:
+      -0.025em;
+  }
+  
+  .readmeIntro p {
+    max-width: 560px;
+  
+    margin: 0;
+  
+    padding-left: 14px;
+  
+    border-left:
+      2px solid
+      rgba(
+        166,
+        244,
+        191,
+        0.26
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.5
+      );
+  
+    font-size: 13px;
+  
+    line-height: 1.8;
+  }
+  
+  .readmeSection {
+    padding:
+      28px 0 6px;
+  }
+  
+  .readmeSection h3 {
+    margin:
+      0 0 18px;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.58
+      );
+  
+    font-size: 11px;
+  
+    font-weight: 500;
+  
+    letter-spacing:
+      0.02em;
+  }
+  
+  .readmeResidents {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  
+    gap:
+      10px;
+  }
+  
+  .readmeResidents article {
+    min-width: 0;
+  
+    padding:
+      14px 15px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.055
+      );
+  
+    border-radius: 8px;
+  
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.014
+      );
+  }
+  
+  .readmeResidents strong {
+    display: block;
+  
+    margin-bottom: 7px;
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.72
+      );
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    font-weight: 500;
+  
+    letter-spacing:
+      0.08em;
+  }
+  
+  .readmeResidents p {
+    margin: 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.43
+      );
+  
+    font-size: 11px;
+  
+    line-height: 1.7;
+  }
+  
+  .readmeStatusSection {
+    padding-bottom: 24px;
+  }
+  
+  .readmeStatusList {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 8px;
+  
+    padding:
+      14px 16px;
+  
+    border:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.055
+      );
+  
+    border-radius: 8px;
+  
+    background:
+      rgba(
+        0,
+        0,
+        0,
+        0.12
+      );
+  }
+  
+  .readmeStatusList p {
+    display: flex;
+  
+    align-items: baseline;
+  
+    min-width: 0;
+  
+    gap: 9px;
+  
+    margin: 0;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.44
+      );
+  
+    font-size: 9px;
+  
+    line-height: 1.7;
+  
+    transition:
+      color 220ms ease,
+      transform 220ms ease;
+  }
+  
+  .readmeStatusList p > span {
+    width: 10px;
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.72
+      );
+  
+    text-align: center;
+  }
+  
+  .readmeStatusList em {
+    margin-left: auto;
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.22
+      );
+  
+    font-size: 8px;
+  
+    font-style: normal;
+  
+    white-space: nowrap;
+  }
+  
+  .readmeStatusTampered {
+    color:
+      rgba(
+        238,
+        200,
+        126,
+        0.72
+      ) !important;
+  
+    transform:
+      translateX(3px);
+  }
+  
+  .readmeStatusTampered > span {
+    color:
+      rgba(
+        238,
+        200,
+        126,
+        0.82
+      ) !important;
+  
+    animation:
+      readmeHoduEdit
+      420ms ease both;
+  }
+  
+  .readmeStatusPama {
+    color:
+      rgba(
+        194,
+        174,
+        238,
+        0.68
+      ) !important;
+  }
+  
+  .readmeStatusPama > span {
+    color:
+      rgba(
+        194,
+        174,
+        238,
+        0.8
+      ) !important;
+  
+    animation:
+      readmePamaApprove
+      520ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      both;
+  }
+  
+  .readmeFooter {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 18px;
+  
+    padding-top: 20px;
+  
+    border-top:
+      1px solid
+      rgba(
+        236,
+        234,
+        229,
+        0.06
+      );
+  
+    color:
+      rgba(
+        236,
+        234,
+        229,
+        0.2
+      );
+  
+    font-size: 8px;
+  
+    line-height: 1.7;
+  }
+  
+  .readmeFooter > span {
+    max-width: 470px;
+  }
+  
+  .readmeFooter a {
+    flex-shrink: 0;
+  
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.58
+      );
+  
+    text-decoration: none;
+  }
+  
+  .readmeFooter a:hover {
+    color:
+      rgba(
+        166,
+        244,
+        191,
+        0.88
+      );
+  }
+  
+  @media (max-width: 780px) {
+  .readmePanel {
+      top: 56px;
+  
+      width:
+        calc(100% - 24px);
+  
+      max-height:
+        calc(100% - 70px);
+    }
+  
+  .readmeBody {
+      max-height:
+        calc(100vh - 145px);
+  
+      padding:
+        24px 18px 22px;
+    }
+  
+  .readmeResidents {
+      grid-template-columns:
+        1fr;
+    }
+  
+  .readmeStatusList p {
+      flex-wrap: wrap;
+    }
+  
+  .readmeStatusList em {
+      width: 100%;
+  
+      margin-left: 19px;
+    }
+  
+  .readmeFooter {
+      align-items: flex-start;
+  
+      flex-direction: column;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+  .readmeStatusTampered > span,
+    .readmeStatusPama > span {
+      animation-duration: 0.01ms;
+    }
+  }
+  
+  /* Playground animations */
+  
+  @keyframes playgroundDataFloat {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+  
+    50% {
+      transform:
+        translate3d(
+          7px,
+          -11px,
+          0
+        );
+    }
+  }
+  
+  @keyframes jsonBalloonPop {
+    0% {
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  
+    55% {
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        scale(1.22);
+    }
+  
+    100% {
+      opacity: 0;
+  
+      transform:
+        translateY(0)
+        scale(0.12);
+    }
+  }
+  
+  @keyframes snackFall {
+    0% {
+      opacity: 0;
+  
+      transform:
+        translate3d(
+          0,
+          -18px,
+          0
+        )
+        rotate(0deg)
+        scale(0.65);
+    }
+  
+    12% {
+      opacity: 1;
+    }
+  
+    72% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+  
+      transform:
+        translate3d(
+          var(--snack-x),
+          230px,
+          0
+        )
+        rotate(
+          var(--snack-rotate)
+        )
+        scale(1);
+    }
+  }
+  
+  @keyframes hoduSnackHappy {
+    from {
+      transform:
+        rotate(-2deg)
+        translateY(0)
+        scale(1.02);
+    }
+  
+    to {
+      transform:
+        rotate(2deg)
+        translateY(-9px)
+        scale(1.04);
+    }
+  }
+  
+  @keyframes txtHoduApproach {
+    from {
+      left: -205px;
+  
+      transform:
+        translateY(4px)
+        rotate(-3deg);
+    }
+  
+    to {
+      left: 42%;
+  
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+  
+  @keyframes txtHoduEscape {
+    0% {
+      left: 42%;
+  
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  
+    35% {
+      transform:
+        translateY(-8px)
+        rotate(4deg);
+    }
+  
+    100% {
+      left: calc(100% + 120px);
+  
+      transform:
+        translateY(2px)
+        rotate(8deg);
+    }
+  }
+  
+  @keyframes txtBeanRetrieve {
+    0% {
+      left: 20px;
+  
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  
+    45% {
+      left: 48%;
+  
+      transform:
+        translateY(-4px)
+        rotate(-3deg);
+    }
+  
+    100% {
+      left: 20px;
+  
+      transform:
+        translateY(0)
+        rotate(0);
+    }
+  }
+  
+  @keyframes txtPamaWalkIn {
+    from {
+      right: -150px;
+    }
+  
+    to {
+      right: 110px;
+    }
+  }
+  
+  @keyframes txtPamaLeave {
+    from {
+      right: 110px;
+    }
+  
+    to {
+      right: calc(100% + 120px);
+    }
+  }
+  
+  @keyframes txtNudgeMark {
+    0% {
+      opacity: 0;
+  
+      transform:
+        translateY(7px)
+        rotate(-8deg);
+    }
+  
+    35% {
+      opacity: 0.85;
+    }
+  
+    100% {
+      opacity: 0;
+  
+      transform:
+        translateY(-8px)
+        rotate(-8deg);
+    }
+  }
+  
+  @keyframes readmeHoduEdit {
+    0% {
+      transform:
+        translateY(-5px)
+        rotate(-12deg)
+        scale(0.7);
+    }
+  
+    65% {
+      transform:
+        translateY(1px)
+        rotate(7deg)
+        scale(1.18);
+    }
+  
+    100% {
+      transform:
+        translateY(0)
+        rotate(0)
+        scale(1);
+    }
+  }
+  
+  @keyframes readmePamaApprove {
+    0% {
+      opacity: 0;
+  
+      transform:
+        translateX(-7px)
+        rotate(-8deg);
+    }
+  
+    100% {
+      opacity: 1;
+  
+      transform:
+        translateX(0)
+        rotate(0);
+    }
+  }

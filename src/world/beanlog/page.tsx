@@ -1,13 +1,8 @@
-import WorldShell from "@/shared/components/WorldShell";
 import BeanlogView from "@/world/beanlog/components/BeanlogView";
 import { getBeanlogEntries } from "@/world/beanlog/lib/getBeanlogEntries";
 
 export default function BeanlogPage() {
   const entries = getBeanlogEntries();
 
-  return (
-    <WorldShell current="beanlog">
-      <BeanlogView entries={entries} />
-    </WorldShell>
-  );
+  return <BeanlogView entries={entries} />;
 }
