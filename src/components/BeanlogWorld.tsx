@@ -1373,10 +1373,11 @@ export default function BeanlogWorld() {
         "> about",
         "> status",
         "> clear",
-        "> goto bitandink",
-        "> goto archive",
-        "> goto perfugium",
-        "> goto playground",
+        "> bitandink",
+        "> archive",
+        "> perfugium",
+        "> playground",
+        "> webzine",
       ]);
 
       return;
@@ -1570,42 +1571,72 @@ export default function BeanlogWorld() {
     /* GOTO */
 
     if (
+      command === "bitandink" ||
       command === "goto bitandink" ||
       command === "goto bitandink.site"
     ) {
-      void gotoWorkspace(
-        "bitandink"
-      );
+      void gotoWorkspace("bitandink");
 
       return;
     }
 
     if (
+      command === "archive" ||
       command === "goto archive"
     ) {
-      void gotoWorkspace(
-        "archive"
-      );
+      void gotoWorkspace("archive");
 
       return;
     }
 
     if (
+      command === "perfugium" ||
       command === "goto perfugium"
     ) {
-      void gotoWorkspace(
-        "perfugium"
-      );
+      void gotoWorkspace("perfugium");
 
       return;
     }
 
     if (
+      command === "playground" ||
       command === "goto playground"
     ) {
-      void gotoWorkspace(
-        "playground"
-      );
+      void gotoWorkspace("playground");
+
+      return;
+    }
+
+    /* WEBZINE */
+
+    if (
+      command === "webzine" ||
+      command === "goto webzine"
+    ) {
+      void (async () => {
+        if (terminalBusy) {
+          return;
+        }
+
+        setTerminalBusy(true);
+
+        await typeTerminalOutput(
+          [
+            "> locating external publication...",
+            "> bitandink quarterly web magazine found.",
+            "> crossing into another story...",
+          ],
+          {
+            charDelay: 24,
+            lineDelay: 190,
+          }
+        );
+
+        await wait(260);
+
+        window.location.href =
+          "https://bitandink.vercel.app";
+      })();
 
       return;
     }
