@@ -42,18 +42,19 @@ export const metadata: Metadata = {
   keywords: [
     "beanlog",
     "bitandink",
-    "개발자 포트폴리오",
+    "virtual world",
+    "developer playground",
+    "creative coding",
     "웹 개발",
-    "프론트엔드",
-    "백엔드",
     "웹 인터랙션",
     "웹 디자인",
-    "developer portfolio",
-    "web development",
-    "frontend development",
-    "backend development",
-    "interactive web",
+    "인터랙티브 웹",
+    "개발 놀이터",
   ],
+
+  alternates: {
+    canonical: "/",
+  },
 
   openGraph: {
     type: "website",
@@ -76,10 +77,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
-
     images: [SITE_CONFIG.ogImage],
   },
 
