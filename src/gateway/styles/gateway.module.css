@@ -1,0 +1,619 @@
+/* ========================================
+   GATEWAY JOURNEY
+======================================== */
+
+.heroJourney {
+    position: relative;
+  
+    width: 100%;
+    height: 330svh;
+  
+    background: #101114;
+  }
+  
+  
+  /* ========================================
+     STICKY VIEWPORT
+  ======================================== */
+  
+  .heroSticky {
+    --scene-scale: 1;
+    --scene-x: 0px;
+    --scene-y: 0px;
+  
+    --identity-opacity: 1;
+    --hint-opacity: 1;
+    --room-opacity: 1;
+  
+    --portal-top: 37%;
+    --portal-left: 66%;
+    --portal-width: 26%;
+    --portal-height: 32%;
+    --portal-opacity: 0;
+  
+    position: sticky;
+  
+    top: 0;
+  
+    width: 100%;
+    height: 100svh;
+  
+    overflow: hidden;
+  
+    background: #101114;
+    color: #eceae5;
+  
+    isolation: isolate;
+  }
+  
+  
+  /* ========================================
+     ROOM
+  ======================================== */
+  
+  .roomLayer {
+    position: absolute;
+  
+    z-index: 1;
+  
+    inset: 0;
+  
+    opacity: var(--room-opacity);
+  
+    transform:
+      translate3d(
+        var(--scene-x),
+        var(--scene-y),
+        0
+      )
+      scale(var(--scene-scale));
+  
+    transform-origin: 79% 55%;
+  
+    will-change:
+      transform,
+      opacity;
+  }
+  
+  
+  /* ========================================
+     BACKGROUND IMAGE
+  ======================================== */
+  
+  .workspaceImage {
+    position: absolute;
+  
+    z-index: 1;
+  
+    right: 0;
+    bottom: 0;
+  
+    width: min(76vw, 1380px);
+    height: min(88vh, 920px);
+  
+    background-image:
+      url("/bitandink/background-image.webp");
+  
+    background-repeat: no-repeat;
+    background-size: contain;
+  
+    background-position:
+      right bottom;
+  
+    pointer-events: none;
+  }
+  
+  
+  /* ========================================
+     IMAGE FADE
+  ======================================== */
+  
+  .imageFade {
+    position: absolute;
+  
+    z-index: 2;
+  
+    right: 0;
+    bottom: 0;
+  
+    width: min(82vw, 1480px);
+    height: 100%;
+  
+    pointer-events: none;
+  
+    background:
+      linear-gradient(
+        90deg,
+        #101114 0%,
+        rgba(16, 17, 20, 0.96) 8%,
+        rgba(16, 17, 20, 0.74) 18%,
+        rgba(16, 17, 20, 0.22) 36%,
+        rgba(16, 17, 20, 0) 54%
+      ),
+      linear-gradient(
+        180deg,
+        #101114 0%,
+        rgba(16, 17, 20, 0.76) 9%,
+        rgba(16, 17, 20, 0.12) 27%,
+        transparent 42%
+      );
+  }
+  
+  
+  /* ========================================
+     BACKGROUND TEXTURE
+  ======================================== */
+  
+  .backgroundTexture {
+    position: absolute;
+  
+    z-index: 3;
+  
+    inset: 0;
+  
+    pointer-events: none;
+  
+    opacity: 0.032;
+  
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.014) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.011) 1px,
+        transparent 1px
+      );
+  
+    background-size: 54px 54px;
+  
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent 82%
+      );
+  }
+  
+  
+  /* ========================================
+     IDENTITY
+  ======================================== */
+  
+  .identity {
+    position: absolute;
+  
+    z-index: 10;
+  
+    top: clamp(
+      58px,
+      8vh,
+      105px
+    );
+  
+    left: clamp(
+      38px,
+      5.8vw,
+      110px
+    );
+  
+    opacity:
+      var(--identity-opacity);
+  
+    will-change: opacity;
+  }
+  
+  
+  .eyebrow {
+    display: block;
+  
+    margin-bottom: 22px;
+  
+    color:
+      rgba(232, 230, 225, 0.4);
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      monospace;
+  
+    font-size: 10px;
+  
+    letter-spacing: 0.14em;
+  }
+  
+  
+  .title {
+    margin: 0;
+  
+    color: #eceae5;
+  
+    font-size:
+      clamp(
+        56px,
+        5.5vw,
+        82px
+      );
+  
+    font-weight: 500;
+  
+    letter-spacing: -0.06em;
+  
+    line-height: 0.94;
+  }
+  
+  
+  .subtitle {
+    margin: 26px 0 0;
+  
+    color:
+      rgba(232, 230, 225, 0.43);
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      "Liberation Mono",
+      monospace;
+  
+    font-size:
+      clamp(
+        10px,
+        0.82vw,
+        13px
+      );
+  
+    letter-spacing: 0.025em;
+  
+    line-height: 1.85;
+  }
+  
+  
+  /* ========================================
+     EXISTING SCROLL HINT
+  ======================================== */
+  
+  .scrollHint {
+    position: absolute;
+  
+    z-index: 10;
+  
+    left:
+      clamp(
+        38px,
+        5.8vw,
+        110px
+      );
+  
+    bottom: 42px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 13px;
+  
+    opacity:
+      var(--hint-opacity);
+  
+    color:
+      rgba(232, 230, 225, 0.25);
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    line-height: 1.5;
+  
+    pointer-events: none;
+  }
+  
+  
+  .scrollText {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .mouseHint {
+    position: relative;
+  
+    display: block;
+  
+    width: 14px;
+    height: 26px;
+  
+    border:
+      1px solid
+      rgba(232, 230, 225, 0.22);
+  
+    border-radius: 8px;
+  }
+  
+  
+  .mouseHint i {
+    position: absolute;
+  
+    top: 5px;
+    left: 50%;
+  
+    width: 2px;
+    height: 4px;
+  
+    border-radius: 2px;
+  
+    background:
+      rgba(232, 230, 225, 0.32);
+  
+    transform:
+      translateX(-50%);
+  }
+  
+  
+  .scrollLine {
+    width: 36px;
+    height: 1px;
+  
+    background:
+      rgba(232, 230, 225, 0.14);
+  }
+  
+  
+  /* ========================================
+     MONITOR TOOLTIP
+  ======================================== */
+  
+  .monitorHint {
+    position: absolute;
+  
+    z-index: 30;
+  
+    top: 45%;
+    left: 66%;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    padding:
+      7px 10px;
+  
+    color:
+      rgba(236, 234, 229, 0.62);
+  
+    background:
+      rgba(10, 11, 13, 0.7);
+  
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.07);
+  
+    border-radius: 5px;
+  
+    backdrop-filter:
+      blur(8px);
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.04em;
+  
+    pointer-events: none;
+  
+    opacity:
+      var(--hint-opacity);
+  
+    animation:
+      monitorHintFloat
+      2.2s
+      ease-in-out
+      infinite;
+  }
+  
+  
+  .monitorHintArrow {
+    font-size: 11px;
+  }
+  
+  
+  @keyframes monitorHintFloat {
+    0%,
+    100% {
+      transform:
+        translateY(0);
+    }
+  
+    50% {
+      transform:
+        translateY(4px);
+    }
+  }
+  
+  
+  /* ========================================
+     MONITOR PORTAL
+  ======================================== */
+  
+  .monitorPortal {
+    position: absolute;
+  
+    z-index: 20;
+  
+    top:
+      var(--portal-top);
+  
+    left:
+      var(--portal-left);
+  
+    width:
+      var(--portal-width);
+  
+    height:
+      var(--portal-height);
+  
+    overflow: hidden;
+  
+    opacity:
+      var(--portal-opacity);
+  
+    background: #0d0f12;
+  
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.045);
+  
+    will-change:
+      top,
+      left,
+      width,
+      height,
+      opacity;
+  }
+  
+  
+  .portalScreen {
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    color:
+      rgba(236, 234, 229, 0.55);
+  
+    background: #101114;
+  
+    font-family:
+      "SFMono-Regular",
+      Consolas,
+      monospace;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  
+  .portalScreen span {
+    font-size: 9px;
+  
+    color:
+      rgba(236, 234, 229, 0.3);
+  }
+  
+  
+  .portalScreen strong {
+    font-size: 11px;
+  
+    font-weight: 400;
+  }
+  
+  
+  /* ========================================
+     MOBILE
+  ======================================== */
+  
+  @media (max-width: 780px) {
+    .heroJourney {
+      height: 290svh;
+    }
+  
+    .identity {
+      top: 46px;
+      left: 24px;
+    }
+  
+    .title {
+      font-size:
+        clamp(
+          48px,
+          15vw,
+          66px
+        );
+    }
+  
+    .subtitle {
+      margin-top: 18px;
+      font-size: 10px;
+    }
+  
+    .workspaceImage {
+      right: -32%;
+      bottom: 0;
+  
+      width: 150%;
+      height: 66%;
+    }
+  
+    .imageFade {
+      width: 100%;
+      height: 100%;
+  
+      background:
+        linear-gradient(
+          180deg,
+          #101114 0%,
+          #101114 30%,
+          rgba(
+            16,
+            17,
+            20,
+            0.82
+          )
+          40%,
+          rgba(
+            16,
+            17,
+            20,
+            0.12
+          )
+          64%,
+          transparent 80%
+        );
+    }
+  
+    .roomLayer {
+      transform-origin:
+        72% 59%;
+    }
+  
+    .scrollHint {
+      display: none;
+    }
+  
+    .monitorHint {
+      display: none;
+    }
+  }
+  
+  
+  /* ========================================
+     REDUCED MOTION
+  ======================================== */
+  
+  @media (
+    prefers-reduced-motion: reduce
+  ) {
+    .heroJourney {
+      height: 200svh;
+    }
+  
+    .roomLayer {
+      transform:
+        none !important;
+    }
+  }

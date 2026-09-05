@@ -1,5 +1,9 @@
-import BeanlogWorld from "@/components/BeanlogWorld";
+import BitandinkRoom from "@/gateway/components/BitandinkRoom";
 
-export default function Home() {
-  return <BeanlogWorld />;
+export default function BitandinkPage() {
+  return (
+    <main>
+      <BitandinkRoom />
+    </main>
+  );
 }

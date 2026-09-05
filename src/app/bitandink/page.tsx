@@ -1,9 +1,9 @@
-import BitandinkHero from "@/features/bitandink/components/BitandinkHero";
+import BitandinkRoom from "@/gateway/components/BitandinkRoom";
 
 export default function BitandinkPage() {
   return (
     <main>
-      <BitandinkHero />
+      <BitandinkRoom />
     </main>
   );
 }
